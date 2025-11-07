@@ -1,6 +1,7 @@
 export type User = {
     name: string,
     phone: string
+    numOfNumbers: string
 }
 
 export type CompleteUser = {
@@ -21,4 +22,5 @@ export type Voucher = {
   id: string
   image_url: string
   verified: boolean
+  num_of_numbers: string
 }

@@ -6,7 +6,7 @@ import Input from '../shared/Input';
 
 const Form = () => {
 
-  const [user, setUser] = useState<User>({ name: '', phone: '' })
+  const [user, setUser] = useState<User>({ name: '', phone: '', numOfNumbers: '2' })
   const [voucher, setVoucher] = useState<File | null>(null)
   const voucherRef = useRef<HTMLInputElement | null>(null)
 
@@ -31,6 +31,7 @@ const Form = () => {
         const formData = new FormData()
         formData.append('name', user.name)
         formData.append('phone', user.phone)
+        formData.append('num_of_numbers', user.numOfNumbers)
         formData.append('voucher', voucher)
 
         try {
@@ -56,7 +57,7 @@ const Form = () => {
                       () => console.log('MENSAJE ENVIADO'),
                       (error) => console.error('Error:', error)
                     );
-                setUser({ name: '', phone: '' })
+                setUser({ name: '', phone: '', numOfNumbers: '2' })
                 return setVoucher(null)
                 // return window.alert(`USUARIO ${data.user} ha comprado los NÚMEROS: ${data.numbers}`)
             }
@@ -68,6 +69,8 @@ const Form = () => {
              }
         }
     }
+
+    console.log(user)
 
   return (
     <main className='flex flex-col gap-8 rounded-xl p-7 bg-black/80 items-center md:pb-20'>
@@ -106,6 +109,16 @@ const Form = () => {
                   accept='image/*'
                   onChange={handleVoucherChange} />
               </div>
+
+              <div className='flex flex-col items-center gap-5'>
+                <label htmlFor="">Cantidad de Números:</label>
+              <div className='flex items-center gap-5'>
+                <button type='button' onClick={() => {setUser( { ...user, numOfNumbers: '2' } )}} value={user.numOfNumbers} name='numOfNumbers' className='bg-lime-400 text_1 rounded-lg py-3 text-black hover:bg-lime-200 w-18'>2</button>
+                <button type='button' onClick={() => {setUser( { ...user, numOfNumbers: '4' } )}} value={user.numOfNumbers} name='numOfNumbers' className='bg-lime-400 text_1 rounded-lg py-3 text-black hover:bg-lime-200 w-18'>4</button>
+                <button type='button' onClick={() => {setUser( { ...user, numOfNumbers: '6' } )}} value={user.numOfNumbers} name='numOfNumbers' className='bg-lime-400 text_1 rounded-lg py-3 text-black hover:bg-lime-200 w-18'>6</button>
+              </div>
+              </div>
+
               <button 
               className='bg-lime-400 text_1 rounded-lg py-3 text-black hover:bg-lime-200'
               type='submit'>Enviar</button>

@@ -22,11 +22,12 @@ const Dashboard = () => {
 
             const vouchersParsed: Voucher[] = user.vouchers
             ? user.vouchers.split(';').map((voucher: string) => {
-              const [id = '', image_url = '', verified = '0'] = voucher.split('|')
+              const [id = '', image_url = '', verified = '0', num_of_numbers = ''] = voucher.split('|')
               return {
                 id: id.trim(),
                 image_url: image_url.trim(),
                 verified: verified === '1',
+                num_of_numbers: num_of_numbers.trim()
               }
             })
             : []
@@ -71,9 +72,9 @@ const Dashboard = () => {
     validateAdmin()
   }, [])
 
-  const handleValidateVoucher = async (id: string) => {
+  const handleValidateVoucher = async (id: string, num_of_numbers: number) => {
     try {
-      const { data } = await api(`/voucher/validate/${id}`)
+      const { data } = await api.post(`/voucher/validate`, { id, num_of_numbers })
       if (data) {
         console.log('VERIFICADO',data)
         setVoucherVerified(!voucherVerified)
@@ -89,7 +90,7 @@ const Dashboard = () => {
 
 
   return (
-    <main className="flex flex-col items-center gap-10 px-2 sm:px-4">
+    <main className="flex flex-col items-center gap-10 px-2 py-20 sm:px-4">
       
       <button 
         onClick={() => { localStorage.removeItem('token'); navigate('/') }}
@@ -149,7 +150,7 @@ const Dashboard = () => {
                           >
                             {voucher.verified ? '✔️ Verificado' : (
                               <button
-                                onClick={() => handleValidateVoucher(voucher.id)}
+                                onClick={() => handleValidateVoucher(voucher.id, Number(voucher.num_of_numbers))}
                                 className="underline text-blue-400 hover:text-blue-200"
                               >
                                 Verificar
@@ -213,7 +214,7 @@ const Dashboard = () => {
                           >
                             {voucher.verified ? '✔️ Verificado' : (
                               <button
-                                onClick={() => handleValidateVoucher(voucher.id)}
+                                onClick={() => handleValidateVoucher(voucher.id, Number(voucher.num_of_numbers))}
                                 className="underline text-red-400 text-[1rem] hover:text-blue-200"
                               >
                                 Verificar

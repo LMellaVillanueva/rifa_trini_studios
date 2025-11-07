@@ -4,9 +4,7 @@ import Input from '../shared/Input'
 import api from '../AxiosConfig'
 import { useNavigate } from 'react-router-dom'
 
-type Props = {}
-
-const LoginAdmin = (props: Props) => {
+const LoginAdmin = () => {
 
     const navigate = useNavigate()
     const [admin, setAdmin] = useState<Admin>({ email: '', password: '' })
@@ -42,7 +40,7 @@ const LoginAdmin = (props: Props) => {
 
 
   return (
-    <main className='flex flex-col gap-10'>
+    <main className='flex flex-col gap-10 py-20'>
         <h1 className='text_1 text-lime-400 text-4xl'>Inicio de Sesión Administrador</h1>
         <form onSubmit={handleLogin} className='flex flex-col gap-9 text-2xl text_2 text-start p-2'>
             <Input
