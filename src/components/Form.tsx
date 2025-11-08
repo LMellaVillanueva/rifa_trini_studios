@@ -3,10 +3,11 @@ import type { User } from '../types'
 import api from '../AxiosConfig'
 import emailjs from '@emailjs/browser';
 import Input from '../shared/Input';
+import Swal from 'sweetalert2';
 
 const Form = () => {
 
-  const [user, setUser] = useState<User>({ name: '', phone: '', numOfNumbers: '2' })
+  const [user, setUser] = useState<User>({ name: '', phone: '', email: '', numOfNumbers: '2' })
   const [voucher, setVoucher] = useState<File | null>(null)
   const voucherRef = useRef<HTMLInputElement | null>(null)
 
@@ -23,14 +24,27 @@ const Form = () => {
 
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault()
-        if (!user.name || !user.phone) {
-            return window.alert('Debes entregar tu información')
+        if (!user.name || !user.phone || user.phone.length < 9) {
+            return Swal.fire({
+            title: "Oops...",
+            text: 'Completa la info.',
+            icon: "error",
+            draggable: true
+          });
         }
-        if (!voucher) return alert('Adjunta tu comprobante')
+
+        if (!voucher) 
+          return Swal.fire({
+          title: "Oops...",
+          text: 'Envía tu comprobante',
+          icon: "error",
+          draggable: true
+        });
 
         const formData = new FormData()
         formData.append('name', user.name)
         formData.append('phone', user.phone)
+        formData.append('email', user.email)
         formData.append('num_of_numbers', user.numOfNumbers)
         formData.append('voucher', voucher)
 
@@ -40,37 +54,66 @@ const Form = () => {
             })
             if (data) {
               if (data.existant) {
-                window.alert(data.existant)
+                  await Swal.fire({
+                    title: 'Usuario ya registrado',
+                    text: data.existant,
+                    icon: "info",
+                    draggable: true
+                  });
               }
-                emailjs
-                    .send(
-                      'service_yefes9k',
-                      'template_3lryzv6',
-                      {
-                        name: data.user,
-                        phone: data.phone,
-                        voucher: data.voucher,
-                      },
-                      { publicKey: 'zADAsfTnn9pOJcyPO' }
-                    )
-                    .then(
-                      () => console.log('MENSAJE ENVIADO'),
-                      (error) => console.error('Error:', error)
-                    );
-                setUser({ name: '', phone: '', numOfNumbers: '2' })
+                await emailjs
+                .send(
+                  'service_yefes9k',
+                  'template_3lryzv6',
+                  {
+                    name: data.user,
+                    phone: data.phone,
+                    voucher: data.voucher.image_url,
+                    email: data.email
+                  },
+                  { publicKey: 'zADAsfTnn9pOJcyPO' }
+                )
+                .then(
+                  async () => {},
+                  (error) => console.error('Error:', error)
+                );
+
+                await emailjs
+                .send(
+                  'service_yefes9k',
+                  'template_7sfakso',
+                  {
+                    email: data.email,
+                    numbers: data.voucher.num_of_numbers
+                  },
+                  { publicKey: 'zADAsfTnn9pOJcyPO' }
+                )
+                .then(
+                  async () => {
+                  await Swal.fire({
+                    title: "Números comprados!",
+                    text: 'Se te enviará un correo a la brevedad para confirmar tu comprobante.',
+                    icon: "success",
+                    draggable: true
+                  });
+                  },
+                  (error) => console.error('Error:', error)
+                );
+                setUser({ name: '', phone: '', email: '', numOfNumbers: '2' })
                 return setVoucher(null)
-                // return window.alert(`USUARIO ${data.user} ha comprado los NÚMEROS: ${data.numbers}`)
             }
         } catch (error: any) {
              if (error.response && error.response.data) {
-               alert(error.response.data.error)
+              Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: `Algo salió mal: ${error.response.data.error}`,
+              });
              } else {
                return console.error(error.message)
              }
         }
     }
-
-    console.log(user)
 
   return (
     <main className='flex flex-col gap-8 rounded-xl p-7 bg-black/80 items-center md:pb-20'>
@@ -90,38 +133,50 @@ const Form = () => {
 
             <Input
             type='text'
-            label='Número:'
+            label='Teléfono:'
+            placeholder='Ej: 9 1233 4567'
             name='phone'
             maxLength={9}
             value={user.phone}
             onChange={handleChange}
             required={true}
             />
+
+            <Input
+            type='email'
+            label='Correo:'
+            placeholder='Ej: usuario@gmail.com'
+            name='email'
+            maxLength={100}
+            value={user.email}
+            onChange={handleChange}
+            required={true}
+            />
             
-              <div>
-                  <label htmlFor="">Comprobante:</label>
-                  <input 
-                  className='text-lg border-2 border-lime-400 rounded-lg p-0.5 w-full' 
-                  type="file" 
-                  name='voucher'
-                  required
-                  ref={voucherRef}
-                  accept='image/*'
-                  onChange={handleVoucherChange} />
-              </div>
+            <div>
+                <label htmlFor="">Comprobante:</label>
+                <input 
+                className='text-lg border-2 border-lime-400 rounded-lg p-0.5 w-full' 
+                type="file" 
+                name='voucher'
+                required
+                ref={voucherRef}
+                accept='image/*'
+                onChange={handleVoucherChange} />
+            </div>
 
-              <div className='flex flex-col items-center gap-5'>
-                <label htmlFor="">Cantidad de Números:</label>
+            <div className='flex flex-col items-center gap-5'>
+              <label htmlFor="">Cantidad de Números:</label>
               <div className='flex items-center gap-5'>
-                <button type='button' onClick={() => {setUser( { ...user, numOfNumbers: '2' } )}} value={user.numOfNumbers} name='numOfNumbers' className='bg-lime-400 text_1 rounded-lg py-3 text-black hover:bg-lime-200 w-18'>2</button>
-                <button type='button' onClick={() => {setUser( { ...user, numOfNumbers: '4' } )}} value={user.numOfNumbers} name='numOfNumbers' className='bg-lime-400 text_1 rounded-lg py-3 text-black hover:bg-lime-200 w-18'>4</button>
-                <button type='button' onClick={() => {setUser( { ...user, numOfNumbers: '6' } )}} value={user.numOfNumbers} name='numOfNumbers' className='bg-lime-400 text_1 rounded-lg py-3 text-black hover:bg-lime-200 w-18'>6</button>
+                <button type='button' onClick={() => {setUser( { ...user, numOfNumbers: '2' } )}} value={user.numOfNumbers} name='numOfNumbers' className={`text_1 rounded-lg py-3 text-black hover:bg-lime-200 w-18 ${user.numOfNumbers === '2' ? 'bg-lime-200' : 'bg-lime-400'}`}>2</button>
+                <button type='button' onClick={() => {setUser( { ...user, numOfNumbers: '4' } )}} value={user.numOfNumbers} name='numOfNumbers' className={`text_1 rounded-lg py-3 text-black hover:bg-lime-200 w-18 ${user.numOfNumbers === '4' ? 'bg-lime-200' : 'bg-lime-400'}`}>4</button>
+                <button type='button' onClick={() => {setUser( { ...user, numOfNumbers: '6' } )}} value={user.numOfNumbers} name='numOfNumbers' className={`text_1 rounded-lg py-3 text-black hover:bg-lime-200 w-18 ${user.numOfNumbers === '6' ? 'bg-lime-200' : 'bg-lime-400'}`}>6</button>
               </div>
-              </div>
-
-              <button 
-              className='bg-lime-400 text_1 rounded-lg py-3 text-black hover:bg-lime-200'
-              type='submit'>Enviar</button>
+            </div>
+            
+            <button 
+            className='bg-lime-400 text_1 rounded-lg py-3 text-black hover:bg-lime-200'
+            type='submit'>Comprar números</button>
           </form>
     </main>
   )

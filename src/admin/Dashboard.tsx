@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import api from '../AxiosConfig'
 import { useNavigate } from 'react-router-dom'
 import type { CompleteUser, Voucher } from '../types'
+import emailjs from '@emailjs/browser';
 
 const Dashboard = () => {
   const navigate = useNavigate()
@@ -77,6 +78,22 @@ const Dashboard = () => {
       const { data } = await api.post(`/voucher/validate`, { id, num_of_numbers })
       if (data) {
         console.log('VERIFICADO',data)
+        // await emailjs
+        //         .send(
+        //           'service_yefes9k',
+        //           'template_3lryzv6',
+        //           {
+        //             name: data.user,
+        //             phone: data.phone,
+        //             voucher: data.voucher.image_url,
+        //             email: data.email
+        //           },
+        //           { publicKey: 'zADAsfTnn9pOJcyPO' }
+        //         )
+        //         .then(
+        //           async () => {},
+        //           (error) => console.error('Error:', error)
+        //         );
         setVoucherVerified(!voucherVerified)
       }
     } catch (error: any) {
@@ -179,6 +196,7 @@ const Dashboard = () => {
               <div className="flex flex-col gap-1">
                 <p><span className="font-semibold text-lime-300">Nombre:</span> {user.name}</p>
                 <p><span className="font-semibold text-lime-300">Teléfono:</span> {user.phone}</p>
+                <p><span className="font-semibold text-lime-300">Correo:</span> {user.email}</p>
           
                 <div className='flex flex-col items-center'>
                   <span className="font-semibold text-lime-300">N° de Rifa:</span>
