@@ -19,7 +19,8 @@ const Jackpot = () => {
   return (
     <main className='flex flex-col items-center relative bg-black/80 h-[75vh] overflow-clip
     md:h-[95vh] md:top-16
-    lg:h-[150vh]'>
+    lg:h-[150vh]'
+    id="land">
 
      <div className="absolute h-[50vh] w-full">
         <img 

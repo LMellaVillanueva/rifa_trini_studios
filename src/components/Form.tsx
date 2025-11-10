@@ -116,7 +116,7 @@ const Form = () => {
     }
 
   return (
-    <main className='flex flex-col gap-8 rounded-xl p-7 bg-black/80 items-center md:pb-20'>
+    <main className='flex flex-col gap-8 rounded-xl p-7 pt-28 bg-black/80 items-center md:pb-20' id='form'>
         <h1 className='text_1 text-lime-400 text-4xl md:text-6xl'>Envíanos tu Comprobante</h1>
         <p className='text_2 text-md md:text-2xl'>Una vez hecha la transferencia, envía este formulario para conocer tus datos y asignarte un número!</p>
           <form onSubmit={handleSubmit} className='flex flex-col gap-9 text-2xl text_2 text-start p-2 md:text-3xl md:w-3/4 lg:w-1/3'>
@@ -168,14 +168,14 @@ const Form = () => {
             <div className='flex flex-col items-center gap-5'>
               <label htmlFor="">Cantidad de Números:</label>
               <div className='flex items-center gap-5'>
-                <button type='button' onClick={() => {setUser( { ...user, numOfNumbers: '2' } )}} value={user.numOfNumbers} name='numOfNumbers' className={`text_1 rounded-lg py-3 text-black hover:bg-lime-200 w-18 ${user.numOfNumbers === '2' ? 'bg-lime-200' : 'bg-lime-400'}`}>2</button>
-                <button type='button' onClick={() => {setUser( { ...user, numOfNumbers: '4' } )}} value={user.numOfNumbers} name='numOfNumbers' className={`text_1 rounded-lg py-3 text-black hover:bg-lime-200 w-18 ${user.numOfNumbers === '4' ? 'bg-lime-200' : 'bg-lime-400'}`}>4</button>
-                <button type='button' onClick={() => {setUser( { ...user, numOfNumbers: '6' } )}} value={user.numOfNumbers} name='numOfNumbers' className={`text_1 rounded-lg py-3 text-black hover:bg-lime-200 w-18 ${user.numOfNumbers === '6' ? 'bg-lime-200' : 'bg-lime-400'}`}>6</button>
+                <button type='button' onClick={() => {setUser( { ...user, numOfNumbers: '2' } )}} value={user.numOfNumbers} name='numOfNumbers' className={`text_1 rounded-lg py-3 text-black hover:bg-lime-200 hover:cursor-pointer w-18 ${user.numOfNumbers === '2' ? 'bg-lime-200' : 'bg-lime-400'}`}>2</button>
+                <button type='button' onClick={() => {setUser( { ...user, numOfNumbers: '4' } )}} value={user.numOfNumbers} name='numOfNumbers' className={`text_1 rounded-lg py-3 text-black hover:bg-lime-200 hover:cursor-pointer w-18 ${user.numOfNumbers === '4' ? 'bg-lime-200' : 'bg-lime-400'}`}>4</button>
+                <button type='button' onClick={() => {setUser( { ...user, numOfNumbers: '6' } )}} value={user.numOfNumbers} name='numOfNumbers' className={`text_1 rounded-lg py-3 text-black hover:bg-lime-200 hover:cursor-pointer w-18 ${user.numOfNumbers === '6' ? 'bg-lime-200' : 'bg-lime-400'}`}>6</button>
               </div>
             </div>
             
             <button 
-            className='bg-lime-400 text_1 rounded-lg py-3 text-black hover:bg-lime-200'
+            className='bg-lime-400 text_1 rounded-lg py-3 text-black hover:bg-lime-200 hover:cursor-pointer'
             type='submit'>Comprar números</button>
           </form>
     </main>

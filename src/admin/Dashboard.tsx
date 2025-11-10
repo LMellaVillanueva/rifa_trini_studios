@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import api from '../AxiosConfig'
 import { useNavigate } from 'react-router-dom'
 import type { CompleteUser, Voucher } from '../types'
+import Swal from 'sweetalert2';
 import emailjs from '@emailjs/browser';
 
 const Dashboard = () => {
@@ -63,11 +64,12 @@ const Dashboard = () => {
       } catch (error: any) {
         localStorage.removeItem('token')
         navigate('/')
-             if (error.response && error.response.data) {
-               alert(error.response.data.error)
-             } else {
-               return console.error(error.message)
-             }
+        return Swal.fire({
+                    title: "Oops...",
+                    text: 'Sesión de Administrador no iniciada',
+                    icon: "error",
+                    draggable: true
+                  });
         }
     }
     validateAdmin()

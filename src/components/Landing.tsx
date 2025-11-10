@@ -43,7 +43,7 @@ const Landing = () => {
             {/* </div> */}
 
             {/* DATOS TRANSFER. */}
-            <h1 className='text-4xl md:text-6xl text-lime-400 font-medium text_1 pt-10'>Datos de <br /> Transferencia</h1>
+            <h1 className='text-4xl md:text-6xl text-lime-400 font-medium text_1 pt-26' id="payment">Datos de <br /> Transferencia</h1>
             <FaUniversity size={90}/>
 
             <article className='bg-neutral-800/70 flex flex-col gap-8 p-5 rounded-lg md:p-14'>
@@ -69,10 +69,12 @@ const Landing = () => {
                 </span>
             </article>
                 {/* className='bg-lime-400 rounded-lg py-3 text-black hover:bg-lime-200' */}
-            <button className='text_1 bg-lime-400 text-black rounded-lg text-2xl px-10 py-4 flex items-center gap-4 hover:bg-lime-200'>
+            <a className='text_1 bg-lime-400 text-black rounded-lg text-2xl px-10 py-4 flex items-center gap-4 hover:bg-lime-200'
+            href="https://wa.me/994149032"
+            target="_blank">
                 Whatsapp
                 <img src="/imgs/wspBlack.png" alt="wsp" width={50} />
-            </button>
+            </a>
         </article>
 
         {/* FORMULARIO */}
