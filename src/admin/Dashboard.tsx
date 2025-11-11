@@ -41,7 +41,12 @@ const Dashboard = () => {
         } 
       } catch (error: any) { 
         if (error.response && error.response.data) { 
-          alert(error.response.data.error) 
+          Swal.fire({
+                    title: "Oops...",
+                    text: 'No hay usuarios registrados',
+                    icon: "error",
+                    draggable: true
+                  });
         } else { 
             return console.error(error.message) 
           }
@@ -107,16 +112,65 @@ const Dashboard = () => {
         }
   }
 
+  const handleDelete = async (model: string) => {
+    try {
+      if (model === 'users') {
+        const { data } = await api.post('/user/elim')
+        if (data) {
+          setVoucherVerified(!voucherVerified)
+          return Swal.fire({
+                    title: "Usuarios eliminados",
+                    icon: "success",
+                    draggable: true
+                  });
+        }
+
+      } else {
+        const { data } = await api.post('/voucher/elim')
+        if (data) {
+          setVoucherVerified(!voucherVerified)
+          return Swal.fire({
+                    title: "Números eliminados",
+                    icon: "success",
+                    draggable: true
+                  });
+        }
+      }
+    } catch (error) {
+      return Swal.fire({
+                    title: "Oops...",
+                    text: 'Error al eliminar',
+                    icon: "error",
+                    draggable: true
+                  });
+    }
+  }
+
 
   return (
-    <main className="flex flex-col items-center gap-10 px-2 py-20 sm:px-4">
+    <main className="flex flex-col items-center gap-10 px-5 py-10 sm:px-4">
       
-      <button 
-        onClick={() => { localStorage.removeItem('token'); navigate('/') }}
-        className="absolute top-3 right-3 border rounded-lg bg-lime-400 p-2 text-xs sm:text-sm hover:bg-lime-200 text-black"
-      >
-        Cerrar Sesión
-      </button>
+      <section className='flex items-center gap-10'>
+        <button 
+          onClick={() => { localStorage.removeItem('token'); navigate('/') }}
+          className="border rounded-lg bg-lime-400 p-2 text-xs sm:text-sm hover:bg-lime-200 text-black"
+          >
+          Cerrar Sesión
+        </button>
+
+        <button 
+          onClick={() => handleDelete('users')}
+          className="border rounded-lg bg-lime-400 p-2 text-xs sm:text-sm hover:bg-lime-200 text-black"
+          >
+          Eliminar Usuarios
+        </button>
+        <button 
+          onClick={() => handleDelete('numbers')}
+          className="border rounded-lg bg-lime-400 p-2 text-xs sm:text-sm hover:bg-lime-200 text-black"
+          >
+          Eliminar Números de Rifa
+        </button>
+      </section>
       
       <h1 className="text-center text-lg sm:text-xl font-semibold">Bienvenido Administrador</h1>
       
