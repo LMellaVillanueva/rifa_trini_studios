@@ -54,3 +54,15 @@
 .text_4 {
   font-family: "Faster One", system-ui;
 }
+
+@media (min-width: 800px) {
+  #allContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  #evContainer {
+    position: relative;
+    width: 70%;
+  }
+}

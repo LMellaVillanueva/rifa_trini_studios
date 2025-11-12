@@ -12,10 +12,12 @@ function App() {
        <Route
         path="/"
         element={
-          <main className="relative flex flex-col justify-between gap-12 items-center">
-            <div className="absolute inset-0 bg-[url('imgs/fondo.jpg')] bg-repeat bg-center bg-cover opacity-60 -z-10" />
-            <NavBar />
-            <Landing />
+          <main className="relative flex flex-col justify-between gap-12 items-center" id='allContainer'>
+            <div id='evContainer'>
+              <div className="absolute inset-0 bg-[url('imgs/fondo.jpg')] bg-repeat bg-center bg-cover opacity-60 -z-10" />
+              <NavBar />
+              <Landing />
+            </div>
           </main>
         }
         />
