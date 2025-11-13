@@ -19,7 +19,7 @@ const Jackpot = () => {
   return (
     <main className='flex flex-col items-center relative bg-black/80 h-[75vh] overflow-clip
     md:h-[95vh] md:top-16
-    lg:h-[150vh]'
+    lg:h-[120vh] lg:top-12'
     id="land">
 
      <div className="absolute h-[50vh] w-full">
@@ -46,8 +46,8 @@ const Jackpot = () => {
         width={900}
         style={{
             // controla la subida
-            transform: ` ${wDisplay < 800 ? `translateY(${-offset * 0.1}px)` : `translateY(${-offset * 0.5}px)`} 
-            ${wDisplay < 800 ? `scale(${1 + offset * 0.0005})` : `scale(${1 + offset * 0.0002})`} `,
+            transform: ` ${wDisplay < 800 ? `translateY(${-offset * 0.1}px)` : `translateY(${-offset * 0.1}px)`} 
+            ${wDisplay < 800 ? `scale(${1 + offset * 0.0005})` : `scale(${1 + offset * 0.0005})`} `,
             transition: 'transform 0.1s linear',
         }}/>
     </main>
