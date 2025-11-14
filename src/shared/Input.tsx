@@ -13,7 +13,7 @@ type Props = {
 
 const Input = ({ type, label, name, value, onChange, maxLength, required, placeholder }: Props) => {
   return (
-        <div className='flex flex-col items-start gap-2'>
+        <div className='flex flex-col items-start gap-2 md:text-3xl'>
             <label htmlFor={name}>{label}</label>
             <input 
             type={type}

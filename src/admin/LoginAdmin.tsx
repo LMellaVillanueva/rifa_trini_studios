@@ -40,9 +40,14 @@ const LoginAdmin = () => {
 
 
   return (
-    <main className='flex flex-col gap-10 py-20'>
-        <h1 className='text_1 text-lime-400 text-4xl'>Inicio de Sesión Administrador</h1>
-        <form onSubmit={handleLogin} className='flex flex-col gap-9 text-2xl text_2 text-start p-2'>
+    <main className='flex flex-col gap-10 py-20 px-5 
+    md:w-3/4 md:mx-auto
+    lg:w-screen'>
+        <button 
+        className="absolute top-5 left-5 md:top-10 md:left-10 p-3 rounded-md bg-lime-400 hover:bg-lime-200 text-black cursor-pointer w-fit mx-auto md:text-3xl"
+        onClick={() => {navigate('/')}}>Volver</button>
+            <h1 className='text_1 text-lime-400 text-4xl mt-10 md:text-6xl'>Inicio de Sesión Administrador</h1>
+        <form onSubmit={handleLogin} className='flex flex-col gap-9 text-2xl text_2 text-start p-2 lg:w-1/2 lg:mx-auto'>
             <Input
             type='email'
             label='Correo:'
@@ -62,7 +67,7 @@ const LoginAdmin = () => {
             required={true}
             />
         <button 
-        className="p-2 rounded-md bg-lime-400 hover:bg-lime-200 text-black" 
+        className="p-3 rounded-md bg-lime-400 hover:bg-lime-200 text-black cursor-pointer w-fit mx-auto md:text-3xl" 
         type='submit'>Iniciar Sesión</button>
         </form>
     </main>
