@@ -61,44 +61,50 @@ const Form = () => {
                     draggable: true
                   });
               }
-                await emailjs
-                .send(
-                  'service_yefes9k',
-                  'template_3lryzv6',
-                  {
-                    name: data.user,
-                    phone: data.phone,
-                    voucher: data.voucher.image_url,
-                    email: data.email
-                  },
-                  { publicKey: 'zADAsfTnn9pOJcyPO' }
-                )
-                .then(
-                  async () => {},
-                  (error) => console.error('Error:', error)
-                );
+                // await emailjs
+                // .send(
+                //   'service_yefes9k',
+                //   'template_3lryzv6',
+                //   {
+                //     name: data.user,
+                //     phone: data.phone,
+                //     voucher: data.voucher.image_url,
+                //     email: data.email
+                //   },
+                //   { publicKey: 'zADAsfTnn9pOJcyPO' }
+                // )
+                // .then(
+                //   async () => {},
+                //   (error) => console.error('Error:', error)
+                // );
 
-                await emailjs
-                .send(
-                  'service_yefes9k',
-                  'template_7sfakso',
-                  {
-                    email: data.email,
-                    numbers: data.voucher.num_of_numbers
-                  },
-                  { publicKey: 'zADAsfTnn9pOJcyPO' }
-                )
-                .then(
-                  async () => {
-                  await Swal.fire({
+                // await emailjs
+                // .send(
+                //   'service_yefes9k',
+                //   'template_7sfakso',
+                //   {
+                //     email: data.email,
+                //     numbers: data.voucher.num_of_numbers
+                //   },
+                //   { publicKey: 'zADAsfTnn9pOJcyPO' }
+                // )
+                // .then(
+                //   async () => {
+                //   await Swal.fire({
+                //     title: "Números comprados!",
+                //     text: 'Se te enviará un correo a la brevedad para confirmar tu comprobante.',
+                //     icon: "success",
+                //     draggable: true
+                //   });
+                //   },
+                //   (error) => console.error('Error:', error)
+                // );
+                Swal.fire({
                     title: "Números comprados!",
                     text: 'Se te enviará un correo a la brevedad para confirmar tu comprobante.',
                     icon: "success",
                     draggable: true
                   });
-                  },
-                  (error) => console.error('Error:', error)
-                );
                 setUser({ name: '', phone: '', email: '', numOfNumbers: '2' })
                 return setVoucher(null)
             }

@@ -45,7 +45,6 @@ const Dashboard = () => {
                     title: "Oops...",
                     text: 'No hay usuarios registrados',
                     icon: "error",
-                    draggable: true
                   });
         } else { 
             return console.error(error.message) 
@@ -73,7 +72,6 @@ const Dashboard = () => {
                     title: "Oops...",
                     text: 'Sesión de Administrador no iniciada',
                     icon: "error",
-                    draggable: true
                   });
         }
     }
@@ -121,7 +119,6 @@ const Dashboard = () => {
           return Swal.fire({
                     title: "Usuarios eliminados",
                     icon: "success",
-                    draggable: true
                   });
         }
 
@@ -132,16 +129,39 @@ const Dashboard = () => {
           return Swal.fire({
                     title: "Números eliminados",
                     icon: "success",
-                    draggable: true
                   });
         }
       }
     } catch (error) {
       return Swal.fire({
                     title: "Oops...",
-                    text: 'Error al eliminar',
+                    text: 'Error al eliminar o números inexistentes',
                     icon: "error",
-                    draggable: true
+                  });
+    }
+  }
+
+  const handleNumberDelete = async (id: number) => {
+    try {
+      const { data } = await api(`/user/delete_numbers/${id}`)
+      if (data) {
+        setVoucherVerified(!voucherVerified)
+        return Swal.fire({
+               title: "Números de usuario eliminados",
+               icon: "success",
+             });
+      } else {
+      return Swal.fire({
+                    title: "Oops...",
+                    text: 'Error al eliminar o números inexistentes',
+                    icon: "error",
+                  });
+      }
+    } catch (error) {
+      return Swal.fire({
+                    title: "Oops...",
+                    text: 'Error al eliminar o números inexistentes',
+                    icon: "error",
                   });
     }
   }
@@ -256,6 +276,11 @@ const Dashboard = () => {
           
                 <div className='flex flex-col items-center'>
                   <span className="font-semibold text-lime-300">N° de Rifa:</span>
+                  
+                  <button onClick={() => handleNumberDelete(user.user_id)}
+                    className="border rounded-lg bg-lime-400 p-2 text-xs sm:text-sm hover:bg-lime-200 text-black"
+                    >Eliminar Números de Rifa</button>
+
                   <div className="grid grid-cols-2 gap-y-1 mt-1 w-2/3">
                     {user.rifa_numbers ? (
                       user.rifa_numbers.split(';').map((num, index) => (
