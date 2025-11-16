@@ -40,8 +40,8 @@ const Dashboard = () => {
         } 
       } catch (error: any) { 
         if (error.response && error.response.data) { 
+            console.error(error.message) 
             return setUsers([])
-            return console.error(error.message) 
           }
         } 
       } 
@@ -76,6 +76,13 @@ const Dashboard = () => {
     try {
       const { data } = await api.post(`/voucher/validate`, { id, num_of_numbers })
       if (data) {
+        if (data.full) {
+          return Swal.fire({
+                    title: data.full,
+                    text: 'Ya se vendieron todos los números de rifa. Muchas gracias!',
+                    icon: "error",
+                  });
+        }
         console.log('VERIFICADO',data)
         // await emailjs
         //         .send(

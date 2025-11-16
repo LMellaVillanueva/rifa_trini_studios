@@ -29,7 +29,6 @@ const Form = () => {
             title: "Oops...",
             text: 'Completa la info.',
             icon: "error",
-            draggable: true
           });
         }
 
@@ -38,7 +37,6 @@ const Form = () => {
           title: "Oops...",
           text: 'Envía tu comprobante',
           icon: "error",
-          draggable: true
         });
 
         const formData = new FormData()
@@ -53,12 +51,21 @@ const Form = () => {
                 headers: { 'Content-Type': 'multipart/form-data' }
             })
             if (data) {
+              if (data.message) {
+                await Swal.fire({
+                    title: data.message,
+                    text: 'Ya se vendieron todos los números de rifa. Muchas gracias!',
+                    icon: "error",
+                  });
+                  setUser({ name: '', phone: '', email: '', numOfNumbers: '2' })
+                  return setVoucher(null)
+              }
+
               if (data.existant) {
                   await Swal.fire({
                     title: 'Usuario ya registrado',
                     text: data.existant,
                     icon: "info",
-                    draggable: true
                   });
               }
                 // await emailjs
@@ -122,7 +129,7 @@ const Form = () => {
     }
 
   return (
-    <main className='flex flex-col gap-8 rounded-xl p-7 pt-28 bg-black/80 items-center md:pb-20' id='form'>
+    <main className='flex flex-col gap-8 rounded-xl p-7 pt-28 items-center md:pb-20' id='form'>
         <h1 className='text_1 text-lime-400 text-4xl md:text-6xl'>Envíanos tu Comprobante</h1>
         <p className='text_2 text-md md:text-2xl'>Una vez hecha la transferencia, envía este formulario para conocer tus datos y asignarte un número!</p>
           <form onSubmit={handleSubmit} className='flex flex-col gap-9 text-2xl text_2 text-start p-2 md:text-3xl md:w-3/4 lg:w-1/3'>

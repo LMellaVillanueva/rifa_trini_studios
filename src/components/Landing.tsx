@@ -25,13 +25,14 @@ const Landing = () => {
         </article> */}
 
             {/* INFO */}
-        <article className='flex flex-col gap-8 rounded-xl p-7 bg-black/80 items-center md:pb-20'>
+        <article className='flex flex-col gap-8 rounded-xl p-7 items-center md:pb-20'>
             <h1 className='text-[2.9rem] md:text-7xl text-lime-400 font-medium text_1'>¡Compra <br /> tus Números!</h1>
 
             <span className='flex flex-col items-center text-2xl md:text-4xl'>
                 <p className='text_2'>Compra mínima:</p>
                 <p className='text-lime-400 text-4xl md:text-5xl font-extrabold text_3'>2 números</p>
             </span>
+
 
             <span className='flex flex-col items-center text-2xl md:text-4xl'>
                 <p className='text_2'>Valor por 2 números:</p>
