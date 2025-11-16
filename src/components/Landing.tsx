@@ -38,9 +38,7 @@ const Landing = () => {
                 <p className='text-lime-400 text-5xl md:text-6xl font-extrabold text_3'>$6.000</p>
             </span>
 
-            {/* <div className='grid grid-cols-10 gap-2 text-xl font-mono'> */}
-                <p className='text-xl text_3 md:text-4xl'>Número al azar de 1 al 200</p>
-            {/* </div> */}
+            <p className='text-xl text_3 md:text-4xl'>Número al azar de 1 al 200</p>
 
             {/* DATOS TRANSFER. */}
             <h1 className='text-4xl md:text-6xl text-lime-400 font-medium text_1 pt-26' id="payment">Datos de <br /> Transferencia</h1>
@@ -68,7 +66,6 @@ const Landing = () => {
                     <p className='text_2 text-lime-400'>001072506074</p>
                 </span>
             </article>
-                {/* className='bg-lime-400 rounded-lg py-3 text-black hover:bg-lime-200' */}
             <a className='text_1 bg-lime-400 text-black rounded-lg text-2xl px-10 py-4 flex items-center gap-4 hover:bg-lime-200'
             href="https://wa.me/994149032"
             target="_blank">

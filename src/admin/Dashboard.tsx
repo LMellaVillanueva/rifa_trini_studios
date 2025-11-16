@@ -14,14 +14,13 @@ const Dashboard = () => {
 
   useEffect(() => { 
     const fetchUsers = async () => { 
-      try { const { data } = await api('/user/all_users') 
-        if (data) { 
-
+      try { 
+        const { data } = await api('/user/all_users') 
+        if (data.all_users) { 
           //! Vamos a parsear los vouchers para ocupar sus props
           const usersWithVouchers = data.all_users.map((user: CompleteUser) => {
 
             // ? Si existen los vouchers separar el string por props, sino que sea un array vacío
-
             const vouchersParsed: Voucher[] = user.vouchers
             ? user.vouchers.split(';').map((voucher: string) => {
               const [id = '', image_url = '', verified = '0', num_of_numbers = ''] = voucher.split('|')
@@ -41,12 +40,7 @@ const Dashboard = () => {
         } 
       } catch (error: any) { 
         if (error.response && error.response.data) { 
-          Swal.fire({
-                    title: "Oops...",
-                    text: 'No hay usuarios registrados',
-                    icon: "error",
-                  });
-        } else { 
+            return setUsers([])
             return console.error(error.message) 
           }
         } 
@@ -115,21 +109,21 @@ const Dashboard = () => {
       if (model === 'users') {
         const { data } = await api.post('/user/elim')
         if (data) {
-          setVoucherVerified(!voucherVerified)
-          return Swal.fire({
-                    title: "Usuarios eliminados",
-                    icon: "success",
-                  });
+          Swal.fire({
+            title: "Usuarios eliminados",
+            icon: "success",
+          });
+          return setVoucherVerified(!voucherVerified)
         }
 
       } else {
         const { data } = await api.post('/voucher/elim')
         if (data) {
-          setVoucherVerified(!voucherVerified)
-          return Swal.fire({
-                    title: "Números eliminados",
-                    icon: "success",
-                  });
+          Swal.fire({
+            title: "Números eliminados",
+            icon: "success",
+          });
+          return setVoucherVerified(!voucherVerified)
         }
       }
     } catch (error) {
@@ -216,7 +210,7 @@ const Dashboard = () => {
 
                   <button onClick={() => handleNumberDelete(user.user_id)}
                     className="border rounded-lg bg-lime-400 p-2 m-3 text-xs sm:text-sm hover:bg-lime-200 text-black"
-                    >Eliminar Números de Rifa</button>
+                    >Eliminar Números de Este Usuario</button>
 
                   {user.rifa_numbers ? (
                     <div className="grid grid-cols-2 gap-x-4 gap-y-1">
@@ -230,43 +224,43 @@ const Dashboard = () => {
                 </td>
                 
                 <td className="border border-lime-400 py-2 px-2">
-  {user.vouchersParsed?.length ? (
-    <div className="flex flex-col gap-2">
-      {user.vouchersParsed.map((voucher: Voucher, index) => (
-        <div key={voucher.id} className="flex flex-col items-center justify-center gap-2">
-          <a
-            href={voucher.image_url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-blue-600 underline whitespace-nowrap"
-          >
-            Voucher {index + 1}
-          </a>
-
-          <span className="text-sm font-semibold text-red-500">
-            {!voucher.verified && (
-              <button
-                onClick={() => handleValidateVoucher(voucher.id, Number(voucher.num_of_numbers))}
-                className="underline text-blue-400 hover:text-blue-200 cursor-pointer"
-              >
-                Verificar
-              </button>
-            )}
-          </span>
-        </div>
-      ))}
-    </div>
-  ) : (
-    <span className="text-red-500 font-semibold">✖</span>
-  )}
-</td>
-
-<td className="border border-lime-400 py-2 px-2 text-center">
-  {user.vouchersParsed?.some(v => v.verified)
-    ? <span className="text-green-400 font-semibold">✔️Verificado</span>
-    : <span className="text-red-500 font-semibold">✖</span>
-  }
-</td>
+                  {user.vouchersParsed?.length ? (
+                    <div className="flex flex-col gap-2">
+                      {user.vouchersParsed.map((voucher: Voucher, index) => (
+                        <div key={voucher.id} className="flex flex-col items-center justify-center gap-2">
+                          <a
+                            href={voucher.image_url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-blue-600 underline whitespace-nowrap"
+                          >
+                            Voucher {index + 1}
+                          </a>
+                      
+                          <span className="text-sm font-semibold text-red-500">
+                            {!voucher.verified && (
+                              <button
+                                onClick={() => handleValidateVoucher(voucher.id, Number(voucher.num_of_numbers))}
+                                className="underline text-blue-400 hover:text-blue-200 cursor-pointer"
+                              >
+                                Verificar
+                              </button>
+                            )}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <span className="text-red-500 font-semibold">✖</span>
+                  )}
+                </td>
+                
+                <td className="border border-lime-400 py-2 px-2 text-center">
+                  {user.vouchersParsed?.some(v => v.verified)
+                    ? <span className="text-green-400 font-semibold">✔️Verificado</span>
+                    : <span className="text-red-500 font-semibold">✖</span>
+                  }
+                </td>
               </tr>
             ))}
           </tbody>
@@ -289,7 +283,7 @@ const Dashboard = () => {
                   
                   <button onClick={() => handleNumberDelete(user.user_id)}
                     className="border rounded-lg bg-lime-400 p-2 text-xs sm:text-sm hover:bg-lime-200 text-black"
-                    >Eliminar Números de Rifa</button>
+                    >Eliminar Números de Este Usuario</button>
 
                   <div className="grid grid-cols-2 gap-y-1 mt-1 w-2/3">
                     {user.rifa_numbers ? (
