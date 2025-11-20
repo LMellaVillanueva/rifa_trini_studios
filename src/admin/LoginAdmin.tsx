@@ -24,7 +24,6 @@ const LoginAdmin = () => {
             const { data } = await api.post('/user/login_admin', admin)
 
             if (data) {
-                console.log(data)
                 window.localStorage.setItem('token', data.token)
                 return navigate('/dashboard')
             }

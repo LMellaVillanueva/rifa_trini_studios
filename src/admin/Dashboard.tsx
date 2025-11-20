@@ -3,7 +3,7 @@ import api from '../AxiosConfig'
 import { useNavigate } from 'react-router-dom'
 import type { CompleteUser, Voucher } from '../types'
 import Swal from 'sweetalert2';
-import emailjs from '@emailjs/browser';
+// import emailjs from '@emailjs/browser';
 
 const Dashboard = () => {
   const navigate = useNavigate()
@@ -36,7 +36,6 @@ const Dashboard = () => {
           })
 
           setUsers(usersWithVouchers) 
-          console.log(usersWithVouchers) 
         } 
       } catch (error: any) { 
         if (error.response && error.response.data) { 
@@ -51,14 +50,11 @@ const Dashboard = () => {
   useEffect(() => {
     const validateAdmin = async () => {
       try {
-        const { data } = await api('/user/admin/dashboard', {
+        await api('/user/admin/dashboard', {
           'headers': {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }
         })
-        if (data) {
-          console.log(data)
-        } 
       } catch (error: any) {
         localStorage.removeItem('token')
         navigate('/')
@@ -83,7 +79,6 @@ const Dashboard = () => {
                     icon: "error",
                   });
         }
-        console.log('VERIFICADO',data)
         // await emailjs
         //         .send(
         //           'service_yefes9k',

@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react'
 import type { User } from '../types'
 import api from '../AxiosConfig'
-import emailjs from '@emailjs/browser';
+// import emailjs from '@emailjs/browser';
 import Input from '../shared/Input';
 import Swal from 'sweetalert2';
 
