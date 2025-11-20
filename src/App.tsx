@@ -8,9 +8,6 @@ import Footer from './components/Footer'
 
 function App() {
 
-  const display = window.innerHeight
-  console.log(display)
-
   return (
     <Routes>
        <Route
