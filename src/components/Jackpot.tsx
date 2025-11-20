@@ -17,7 +17,7 @@ const Jackpot = () => {
     }), []
 
   return (
-    <main className='flex flex-col items-center relative bg-black/80 h-[75vh] overflow-clip
+    <main className='flex flex-col items-center relative h-[75vh] overflow-clip
     md:h-[95vh] md:top-16
     lg:h-[120vh] lg:top-12'
     id="land">
