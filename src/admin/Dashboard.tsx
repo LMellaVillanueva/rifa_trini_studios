@@ -171,20 +171,20 @@ const Dashboard = () => {
       <section className='flex flex-col md:flex-row items-center gap-10'>
         <button 
           onClick={() => { localStorage.removeItem('token'); navigate('/') }}
-          className="border rounded-lg bg-lime-400 p-3 w-48 text-xs sm:text-sm hover:bg-lime-200 text-black"
+          className="border rounded-lg bg-lime-400 p-3 w-48 text-xs sm:text-sm hover:bg-lime-200 text-black hover:cursor-pointer"
           >
           Cerrar Sesión
         </button>
 
         <button 
           onClick={() => handleDelete('users')}
-          className="border rounded-lg bg-lime-400 p-3 w-48 text-xs sm:text-sm hover:bg-lime-200 text-black"
+          className="border rounded-lg bg-lime-400 p-3 w-48 text-xs sm:text-sm hover:bg-lime-200 text-black hover:cursor-pointer"
           >
           Eliminar Usuarios
         </button>
         <button 
           onClick={() => handleDelete('numbers')}
-          className="border rounded-lg bg-lime-400 p-3 w-48 text-xs sm:text-sm hover:bg-lime-200 text-black"
+          className="border rounded-lg bg-lime-400 p-3 w-48 text-xs sm:text-sm hover:bg-lime-200 text-black hover:cursor-pointer"
           >
           Eliminar Números de Rifa
         </button>
