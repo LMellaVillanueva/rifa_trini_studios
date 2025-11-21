@@ -39,7 +39,7 @@ const Landing = () => {
                 <p className='text-lime-400 text-5xl md:text-6xl font-extrabold text_3'>$6.000</p>
             </span>
 
-            <p className='text-xl text_3 md:text-4xl'>Número al azar de 1 al 200</p>
+            <p className='text-xl text_3 md:text-4xl'>Los números se ASIGNAN AL AZAR <br /> al comprador de 1 al 200</p>
 
             {/* DATOS TRANSFER. */}
             <h1 className='text-4xl md:text-6xl text-lime-400 font-medium text_1 pt-26' id="payment">Datos de <br /> Transferencia</h1>
