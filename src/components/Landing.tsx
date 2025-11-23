@@ -33,19 +33,22 @@ const Landing = () => {
                 <p className='text-lime-400 text-4xl md:text-5xl font-extrabold text_3'>2 números</p>
             </span>
 
-
             <span className='flex flex-col items-center text-2xl md:text-4xl'>
                 <p className='text_2'>Valor por 2 números:</p>
                 <p className='text-lime-400 text-5xl md:text-6xl font-extrabold text_3'>$6.000</p>
             </span>
-
-            <p className='text-xl text_3 md:text-4xl'>Los números se ASIGNAN AL AZAR <br /> al comprador de 1 al 200</p>
+            
+            <span className='flex flex-col items-center pt-5'>
+                <p className='text-2xl md:text-3xl tracking-wide text_2'>Los números se</p>
+                <p className='text-lime-400 text-3xl md:text-4xl tracking-wide text_3'>ASIGNAN AL AZAR</p>
+                <p className='text-2xl md:text-3xl text_2'>del 1 al 200</p>
+            </span>
 
             {/* DATOS TRANSFER. */}
             <h1 className='text-4xl md:text-6xl text-lime-400 font-medium text_1 pt-26' id="payment">Datos de <br /> Transferencia</h1>
             <FaUniversity size={90}/>
 
-            <article className='bg-neutral-800/70 flex flex-col gap-8 p-5 rounded-lg md:p-14'>
+            <article className='bg-neutral-800/70 flex flex-col gap-8 p-5 rounded-lg md:p-14 text_2'>
                 <span className='flex justify-between items-center gap-10 text-xl md:text-2xl'>
                     <p>Nombre:</p>
                     <p className='text_2 text-lime-400'>José Matute</p>
