@@ -19,7 +19,8 @@ const Jackpot = () => {
   return (
     <main className='flex flex-col items-center relative h-[75vh] overflow-clip
     md:h-[95vh] md:top-16
-    lg:h-[120vh] lg:top-12'
+    lg:h-[120vh] lg:top-12
+    fade_slide_in'
     id="land">
 
      <div className="absolute h-[50vh] w-full">

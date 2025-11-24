@@ -1,10 +1,26 @@
 import { FaUniversity } from "react-icons/fa";
 import Form from './Form';
 import Jackpot from "./Jackpot";
+import { useEffect, useState } from "react";
 
 const Landing = () => {
 
-//  const numbers = [...Array(10)].map((_, i) => i + 1)
+    const [offset, setOffset] = useState(0)
+
+    useEffect(() => {
+        const handleScroll = () => {
+            // guardar el scroll actual
+            setOffset(window.scrollY)
+        }
+
+        window.addEventListener('scroll', handleScroll)
+        return () => window.removeEventListener('scroll', handleScroll)
+
+    }, [])
+
+    const translateX = Math.min(offset * 0.15, 80)
+    const translateY = Math.min(offset * 0.15, 80)
+    const opacity = Math.max(0 + offset * 0.0015, 0)
 
   return (
     <main className='flex flex-col gap-20 py-10 pb-24 w-full mt-12'>
@@ -26,56 +42,68 @@ const Landing = () => {
 
             {/* INFO */}
         <article className='flex flex-col gap-8 rounded-xl p-7 items-center md:pb-20'>
-            <h1 className='text-[2.9rem] md:text-7xl text-lime-400 font-medium text_1'>¡Compra <br /> tus Números!</h1>
+            <section className="flex flex-col gap-8 items-center"
+            style={{
+              transform: `translateX(${ -80 + translateX }px)`,
+              opacity: opacity
+            }}>
+                <h1 className='text-[2.9rem] md:text-7xl text-lime-400 font-medium text_1'>¡Compra <br /> tus Números!</h1>
 
-            <span className='flex flex-col items-center text-2xl md:text-4xl'>
-                <p className='text_2'>Compra mínima:</p>
-                <p className='text-lime-400 text-4xl md:text-5xl font-extrabold text_3'>2 números</p>
-            </span>
+                <span className='flex flex-col items-center text-2xl md:text-4xl'>
+                    <p className='text_2'>Compra mínima:</p>
+                    <p className='text-lime-400 text-4xl md:text-5xl font-extrabold text_3'>2 números</p>
+                </span>
 
-            <span className='flex flex-col items-center text-2xl md:text-4xl'>
-                <p className='text_2'>Valor por 2 números:</p>
-                <p className='text-lime-400 text-5xl md:text-6xl font-extrabold text_3'>$6.000</p>
-            </span>
-            
-            <span className='flex flex-col items-center pt-5'>
-                <p className='text-2xl md:text-3xl tracking-wide text_2'>Los números se</p>
-                <p className='text-lime-400 text-3xl md:text-4xl tracking-wide text_3'>ASIGNAN AL AZAR</p>
-                <p className='text-2xl md:text-3xl text_2'>del 1 al 200</p>
-            </span>
+                <span className='flex flex-col items-center text-2xl md:text-4xl'>
+                    <p className='text_2'>Valor por 2 números:</p>
+                    <p className='text-lime-400 text-5xl md:text-6xl font-extrabold text_3'>$6.000</p>
+                </span>
 
+                <span className='flex flex-col items-center pt-5'>
+                    <p className='text-2xl md:text-3xl tracking-wide text_2'>Los números se</p>
+                    <p className='text-lime-400 text-3xl md:text-4xl tracking-wide text_3'>ASIGNAN AL AZAR</p>
+                    <p className='text-2xl md:text-3xl text_2'>del 1 al 200</p>
+                </span>
+            </section>
+
+            <section className="flex flex-col gap-8 items-center"
+            style={{
+              transform: `translateY(${ translateY }px)`,
+              opacity: opacity
+            }}>
             {/* DATOS TRANSFER. */}
-            <h1 className='text-4xl md:text-6xl text-lime-400 font-medium text_1 pt-26' id="payment">Datos de <br /> Transferencia</h1>
-            <FaUniversity size={90}/>
+                <h1 className='text-4xl md:text-6xl text-lime-400 font-medium text_1 pt-20' id="payment">Datos de <br /> Transferencia</h1>
+                <FaUniversity size={90}/>
 
-            <article className='bg-neutral-800/70 flex flex-col gap-8 p-5 rounded-lg md:p-14 text_2'>
-                <span className='flex justify-between items-center gap-10 text-xl md:text-2xl'>
-                    <p>Nombre:</p>
-                    <p className='text_2 text-lime-400'>José Matute</p>
-                </span>
-                <span className='flex justify-between items-center gap-10 text-xl md:text-2xl'>
-                    <p>Rut:</p>
-                    <p className='text_2 text-lime-400'>26.499.726-7</p>
-                </span>
-                <span className='flex justify-between items-center gap-10 text-xl md:text-2xl'>
-                    <p>Correo:</p>
-                    <p className='text_2 text-lime-400'>correo@gmail.com</p>
-                </span>
-                <span className='flex justify-between items-center gap-10 text-xl md:text-2xl'>
-                    <p>Banco:</p>
-                    <p className='text_2 text-lime-400'>Mercado Pago <br /> Cuenta Vista</p>
-                </span>
-                <span className='flex justify-between items-center gap-10 text-xl md:text-2xl'>
-                    <p>N° Cuenta:</p>
-                    <p className='text_2 text-lime-400'>001072506074</p>
-                </span>
-            </article>
-            <a className='text_1 bg-lime-400 text-black rounded-lg text-2xl px-10 py-4 flex items-center gap-4 hover:bg-lime-200'
-            href="https://wa.me/994149032"
-            target="_blank">
-                Whatsapp
-                <img src="/imgs/wspBlack.png" alt="wsp" width={50} />
-            </a>
+                <article className='bg-neutral-800/70 flex flex-col gap-8 p-5 rounded-lg md:p-14 text_2'>
+                    <span className='flex justify-between items-center gap-10 text-xl md:text-2xl'>
+                        <p>Nombre:</p>
+                        <p className='text_2 text-lime-400'>José Matute</p>
+                    </span>
+                    <span className='flex justify-between items-center gap-10 text-xl md:text-2xl'>
+                        <p>Rut:</p>
+                        <p className='text_2 text-lime-400'>26.499.726-7</p>
+                    </span>
+                    <span className='flex justify-between items-center gap-10 text-xl md:text-2xl'>
+                        <p>Correo:</p>
+                        <p className='text_2 text-lime-400'>correo@gmail.com</p>
+                    </span>
+                    <span className='flex justify-between items-center gap-10 text-xl md:text-2xl'>
+                        <p>Banco:</p>
+                        <p className='text_2 text-lime-400'>Mercado Pago <br /> Cuenta Vista</p>
+                    </span>
+                    <span className='flex justify-between items-center gap-10 text-xl md:text-2xl'>
+                        <p>N° Cuenta:</p>
+                        <p className='text_2 text-lime-400'>001072506074</p>
+                    </span>
+                </article>
+                <a className='text_1 bg-lime-400 text-black rounded-lg text-2xl px-10 py-4 flex items-center gap-4 hover:bg-lime-200'
+                href="https://wa.me/994149032"
+                target="_blank">
+                    Whatsapp
+                    <img src="/imgs/wspBlack.png" alt="wsp" width={50} />
+                </a>
+            </section>
         </article>
 
         {/* FORMULARIO */}
