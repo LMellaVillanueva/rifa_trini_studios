@@ -31,7 +31,6 @@ const Jackpot = () => {
           md:h-[70vh]
           lg:h-[150vh]"
         />
-        {/* <div className="absolute bottom-0 left-0 w-full h-32 bg-black"></div> */}
       </div>
 
         <h1 className='sticky top-20 text-6xl text-lime-400 font-medium p-7 text_1
@@ -46,11 +45,12 @@ const Jackpot = () => {
         lg:w-[2000px]' 
         width={900}
         style={{
-            // controla la subida
-            transform: ` ${wDisplay < 800 ? `translateY(${-offset * 0.1}px)` : `translateY(${-offset * 0.1}px)`} 
-            ${wDisplay < 800 ? `scale(${1 + offset * 0.0005})` : `scale(${1 + offset * 0.0005})`} `,
-            transition: 'transform 0.1s linear',
+          // controla la subida
+          transform: ` ${wDisplay < 800 ? `translateY(${-offset * 0.1}px)` : `translateY(${-offset * 0.1}px)`} 
+          ${wDisplay < 800 ? `scale(${1 + offset * 0.0005})` : `scale(${1 + offset * 0.0005})`} `,
+          transition: 'transform 0.1s linear',
         }}/>
+        <div className="absolute bottom-0 left-0 w-screen h-7 -m-5 bg-lime-400 blur-sm"></div>
     </main>
   )
 }

@@ -41,7 +41,10 @@ const Landing = () => {
         </article> */}
 
             {/* INFO */}
+        <div className="w-full h-5 -mt-10 bg-lime-400 blur-sm"></div>
+
         <article className='flex flex-col gap-8 rounded-xl p-7 items-center md:pb-20'>
+
             <section className="flex flex-col gap-8 items-center"
             style={{
               transform: `translateX(${ -80 + translateX }px)`,
@@ -59,7 +62,7 @@ const Landing = () => {
                     <p className='text-lime-400 text-5xl md:text-6xl font-extrabold text_3'>$6.000</p>
                 </span>
 
-                <span className='flex flex-col items-center pt-5'>
+                <span className='flex flex-col items-center pt-5 pb-10'>
                     <p className='text-2xl md:text-3xl tracking-wide text_2'>Los números se</p>
                     <p className='text-lime-400 text-3xl md:text-4xl tracking-wide text_3'>ASIGNAN AL AZAR</p>
                     <p className='text-2xl md:text-3xl text_2'>del 1 al 200</p>
@@ -72,7 +75,7 @@ const Landing = () => {
               opacity: opacity
             }}>
             {/* DATOS TRANSFER. */}
-                <h1 className='text-4xl md:text-6xl text-lime-400 font-medium text_1 pt-20' id="payment">Datos de <br /> Transferencia</h1>
+                <h1 className='text-4xl md:text-6xl text-lime-400 font-medium text_1' id="payment">Datos de <br /> Transferencia</h1>
                 <FaUniversity size={90}/>
 
                 <article className='bg-neutral-800/70 flex flex-col gap-8 p-5 rounded-lg md:p-14 text_2'>
@@ -97,15 +100,15 @@ const Landing = () => {
                         <p className='text_2 text-lime-400'>001072506074</p>
                     </span>
                 </article>
-                <a className='text_1 bg-lime-400 text-black rounded-lg text-2xl px-10 py-4 flex items-center gap-4 hover:bg-lime-200'
-                href="https://wa.me/994149032"
-                target="_blank">
-                    Whatsapp
-                    <img src="/imgs/wspBlack.png" alt="wsp" width={50} />
-                </a>
             </section>
         </article>
 
+        <a className='text_2 self-center bg-lime-400 text-black rounded-lg text-2xl px-10 py-4 flex items-center gap-4 hover:bg-lime-200'
+        href="https://wa.me/994149032"
+        target="_blank">
+            Whatsapp
+            <img src="/imgs/wspBlack.png" alt="wsp" width={50} />
+        </a>
         {/* FORMULARIO */}
         <Form/>
         
