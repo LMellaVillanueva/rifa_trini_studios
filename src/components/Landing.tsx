@@ -41,7 +41,7 @@ const Landing = () => {
         </article> */}
 
             {/* INFO */}
-        <div className="w-full h-5 -mt-10 bg-lime-400 blur-sm"></div>
+        <div className="hidden md:block w-full h-5 -mt-10 bg-lime-400 blur-sm"></div>
 
         <article className='flex flex-col gap-8 rounded-xl p-7 items-center md:pb-20'>
 

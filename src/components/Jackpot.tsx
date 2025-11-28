@@ -50,7 +50,7 @@ const Jackpot = () => {
           ${wDisplay < 800 ? `scale(${1 + offset * 0.0005})` : `scale(${1 + offset * 0.0005})`} `,
           transition: 'transform 0.1s linear',
         }}/>
-        <div className="absolute bottom-0 left-0 w-screen h-7 -m-5 bg-lime-400 blur-sm"></div>
+        <div className="absolute bottom-0 left-0 w-full md:w-screen h-7 -m-5 bg-lime-400 blur-sm"></div>
     </main>
   )
 }
