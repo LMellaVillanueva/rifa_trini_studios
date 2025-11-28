@@ -21,7 +21,7 @@ const BurguerMenu = ({ setBurguerActive }: Props) => {
   }
 
   return (
-    <main className='fixed top-0 left-0 w-4/5 bg-neutral-900 z-10 p-3 pb-44 flex flex-col gap-6 px-5 burguer'>
+    <main className='fixed top-0 left-0 w-4/5 bg-neutral-900 z-10 p-3 pb-44 flex flex-col gap-6 px-5 burguer md:hidden'>
       {/* logo y X */}
       <section className='flex items-center justify-between w-full pt-5'>
         <HiOutlineX onClick={() => setBurguerActive(false)} size={40}/>
@@ -90,10 +90,13 @@ const BurguerMenu = ({ setBurguerActive }: Props) => {
         <section className='self-end flex items-center'>
           <a href="https://wa.me/994149032"
             target="_blank">
-            <img src="/imgs/wsp.png" alt="wsp" width={60} className='self-center p-1'/>
+            <img src="/imgs/wsp.png" alt="wsp" width={60} className='self-center p-1 mt-1'/>
           </a>
 
-          <img src="/imgs/ig.png" alt="ig" width={60} className='self-center p-0.5'/>
+          <a href="https://www.instagram.com/trinidadstudiobarberia/"
+          target="_blank">
+            <img src="/imgs/ig.png" alt="ig" width={60} className='self-center p-0.5 cursor-pointer'/>
+          </a>
         </section>
 
       </section>

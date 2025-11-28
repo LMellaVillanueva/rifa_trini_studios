@@ -22,10 +22,14 @@ const NavBar = () => {
         <SlMenu size={35} onClick={() => setBurguerActive(true)}/>
       </section>
 
-      <section className='hidden md:flex w-3/5 lg:w-1/4 md:justify-evenly lg:justify-between lg:mx-10 text-2xl text-lime-400'>
-        <button className='text-lime-400 font-semibold hover:text-lime-200 hover:underline cursor-pointer' onClick={() => navigate('land')}>Inicio</button>
-        <button className='text-lime-400 font-semibold hover:text-lime-200 hover:underline cursor-pointer' onClick={() => navigate('payment')}>Pago</button>
-        <button className='text-lime-400 font-semibold hover:text-lime-200 hover:underline cursor-pointer' onClick={() => navigate('form')}>Enviar Datos</button>
+      <section className='hidden md:flex w-4/5 lg:w-2/4 md:justify-evenly lg:justify-between lg:mx-10 text-2xl text-lime-400'>
+        <button className='text-lime-400 font-semibold hover:text-lime-200 hover:underline cursor-pointer' onClick={() => navigate('land')}>Inicio</button>.
+        <button className='text-lime-400 font-semibold hover:text-lime-200 hover:underline cursor-pointer' onClick={() => navigate('payment')}>Pago</button>.
+        <button className='text-lime-400 font-semibold hover:text-lime-200 hover:underline cursor-pointer' onClick={() => navigate('form')}>Enviar Datos</button>.
+        <a 
+        href="https://wa.me/994149032"
+        target="_blank" 
+        className='text-lime-400 font-semibold hover:text-lime-200 hover:underline cursor-pointer'>Contacto</a>
       </section>
 
       <img src="/imgs/logo.png" alt="logo" width={130} className='rounded-lg md:w-54 lg:w-44'/>

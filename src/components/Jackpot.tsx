@@ -27,7 +27,7 @@ const Jackpot = () => {
         <img 
           src="/imgs/money.gif" 
           alt="money_gif" 
-          className="h-[60vh] w-full object-cover
+          className="h-[80vh] w-full object-cover
           md:h-[70vh]
           lg:h-[150vh]"
         />
@@ -41,13 +41,13 @@ const Jackpot = () => {
         <img src="/imgs/dollars.png" 
         alt="premio" 
         className='drop-shadow-lime-400 drop-shadow-lg absolute top-80
-        md:w-[800px]
-        lg:w-[2000px]' 
+        md:w-[800px] md:top-90
+        lg:w-[2000px] lg:top-80' 
         width={900}
         style={{
           // controla la subida
-          transform: ` ${wDisplay < 800 ? `translateY(${-offset * 0.1}px)` : `translateY(${-offset * 0.1}px)`} 
-          ${wDisplay < 800 ? `scale(${1 + offset * 0.0005})` : `scale(${1 + offset * 0.0005})`} `,
+          transform: ` ${wDisplay < 800 ? '' : `translateY(${-offset * 0.1}px)`} 
+          ${wDisplay < 800 ? '' : `scale(${1 + offset * 0.0005})`} `,
           transition: 'transform 0.1s linear',
         }}/>
         <div className="absolute bottom-0 left-0 w-full md:w-screen h-7 -m-5 bg-lime-400 blur-sm"></div>

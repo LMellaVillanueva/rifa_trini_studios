@@ -132,8 +132,8 @@ const Form = () => {
     }
 
   return (
-    <main className='flex flex-col gap-8 rounded-xl px-7 pb-7 items-center md:pb-20' id='form'>
-      <span className='todo'>
+    <main className='flex flex-col gap-8 rounded-xl px-7 pb-7 items-center todo md:pb-20' id='form'>
+      <span className=''>
           <h1 className='text_1 text-lime-400 text-4xl md:text-6xl'>Envíanos tu Comprobante</h1>
           <p className='text_2 text-md md:text-2xl'>Una vez hecha la transferencia, envía este formulario para conocer tus datos y asignarte números.</p>
       </span>
