@@ -1,26 +1,11 @@
 import { FaUniversity } from "react-icons/fa";
 import Form from './Form';
 import Jackpot from "./Jackpot";
-import { useEffect, useState } from "react";
+import { useIntersectionAnim } from "../hooks/useIntersectionAnim";
 
 const Landing = () => {
 
-    const [offset, setOffset] = useState(0)
-
-    useEffect(() => {
-        const handleScroll = () => {
-            // guardar el scroll actual
-            setOffset(window.scrollY)
-        }
-
-        window.addEventListener('scroll', handleScroll)
-        return () => window.removeEventListener('scroll', handleScroll)
-
-    }, [])
-
-    const translateX = Math.min(offset * 0.15, 80)
-    const translateY = Math.min(offset * 0.15, 80)
-    const opacity = Math.max(0 + offset * 0.0015, 0)
+  useIntersectionAnim('.todo')
 
   return (
     <main className='flex flex-col gap-20 py-10 pb-24 w-full mt-12'>
@@ -45,11 +30,7 @@ const Landing = () => {
 
         <article className='flex flex-col gap-8 rounded-xl p-7 items-center md:pb-20'>
 
-            <section className="flex flex-col gap-8 items-center"
-            style={{
-              transform: `translateX(${ -80 + translateX }px)`,
-              opacity: opacity
-            }}>
+            <section className="flex flex-col gap-8 items-center todo">
                 <h1 className='text-[2.9rem] md:text-7xl text-lime-400 font-medium text_1'>¡Compra <br /> tus Números!</h1>
 
                 <span className='flex flex-col items-center text-2xl md:text-4xl'>
@@ -69,11 +50,7 @@ const Landing = () => {
                 </span>
             </section>
 
-            <section className="flex flex-col gap-8 items-center"
-            style={{
-              transform: `translateY(${ translateY }px)`,
-              opacity: opacity
-            }}>
+            <section className="flex flex-col gap-8 items-center todo">
             {/* DATOS TRANSFER. */}
                 <h1 className='text-4xl md:text-6xl text-lime-400 font-medium text_1' id="payment">Datos de <br /> Transferencia</h1>
                 <FaUniversity size={90}/>

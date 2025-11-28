@@ -4,8 +4,11 @@ import api from '../AxiosConfig'
 // import emailjs from '@emailjs/browser';
 import Input from '../shared/Input';
 import Swal from 'sweetalert2';
+import { useIntersectionAnim } from '../hooks/useIntersectionAnim';
 
 const Form = () => {
+
+  useIntersectionAnim('.todo')
 
   const [user, setUser] = useState<User>({ name: '', phone: '', email: '', numOfNumbers: '2' })
   const [voucher, setVoucher] = useState<File | null>(null)
@@ -130,8 +133,10 @@ const Form = () => {
 
   return (
     <main className='flex flex-col gap-8 rounded-xl px-7 pb-7 items-center md:pb-20' id='form'>
-        <h1 className='text_1 text-lime-400 text-4xl md:text-6xl'>Envíanos tu Comprobante</h1>
-        <p className='text_2 text-md md:text-2xl'>Una vez hecha la transferencia, envía este formulario para conocer tus datos y asignarte números.</p>
+      <span className='todo'>
+          <h1 className='text_1 text-lime-400 text-4xl md:text-6xl'>Envíanos tu Comprobante</h1>
+          <p className='text_2 text-md md:text-2xl'>Una vez hecha la transferencia, envía este formulario para conocer tus datos y asignarte números.</p>
+      </span>
           <form onSubmit={handleSubmit} className='flex flex-col gap-9 text-2xl text_2 text-start p-2 md:text-3xl md:w-3/4 lg:w-1/3'>
 
             <Input

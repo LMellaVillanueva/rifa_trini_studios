@@ -68,21 +68,24 @@
   }
 }
 
-.fade_slide_in {
-  animation: fadeSlide 1s ease-out forwards;
+.todo {
+  opacity: 0;
+  transform: translateX(-200px);
+  transition: 1200ms ease;
 }
 
-@keyframes fadeSlide {
-  0% {
-    opacity: 0;
-    transform: translateX(-80px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
+.todo.show {
+  transform: translateX(0);
+  opacity: 1;
 }
 
-.scroll_animate {
-  transition: transform 0.2s ease-out, opacity 0.2s ease-out;
+.burguer {
+  opacity: 0;
+  transform: translateX(-100px);
+  transition: 400ms ease;
+}
+
+.burguer.show {
+  opacity: 1;
+  transform: translateX(0);
 }

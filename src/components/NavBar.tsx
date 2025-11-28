@@ -14,7 +14,7 @@ const NavBar = () => {
 
   return (
     <nav className='fixed top-0 w-full flex items-center justify-between px-5 py-2 bg-neutral-900/80 z-20
-    md:bg-neutral-900 md:p-5 md:h-fit
+    md:bg-neutral-900 md:p-5 md:h-1/6
     lg:left-0' 
     id='allContainer'>
       

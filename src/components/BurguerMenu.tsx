@@ -4,12 +4,15 @@ import { FaHome } from "react-icons/fa";
 import { FaPhone } from "react-icons/fa";
 import { FaEnvelope } from "react-icons/fa";
 import { FaWpforms } from "react-icons/fa"; 
+import { useIntersectionAnim } from "../hooks/useIntersectionAnim";
 
 type Props = {
   setBurguerActive: (value: boolean) => void
 }
 
 const BurguerMenu = ({ setBurguerActive }: Props) => {
+
+  useIntersectionAnim('.burguer')
 
   const navigate = (sect: any) =>{
     const navigateTo = document.getElementById(sect)
@@ -18,7 +21,7 @@ const BurguerMenu = ({ setBurguerActive }: Props) => {
   }
 
   return (
-    <main className='fixed top-0 left-0 w-4/5 bg-neutral-900 z-10 p-3 pb-44 flex flex-col gap-6 px-5'>
+    <main className='fixed top-0 left-0 w-4/5 bg-neutral-900 z-10 p-3 pb-44 flex flex-col gap-6 px-5 burguer'>
       {/* logo y X */}
       <section className='flex items-center justify-between w-full pt-5'>
         <HiOutlineX onClick={() => setBurguerActive(false)} size={40}/>
