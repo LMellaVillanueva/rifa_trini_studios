@@ -23,7 +23,7 @@ const NavBar = () => {
         <SlMenu size={35} onClick={() => setBurguerActive(true)}/>
       </section>
 
-        <img src="/imgs/logo.png" alt="logo" width={100} className='rounded-lg md:w-54 lg:w-40'/>
+      <img src="/imgs/logo.png" onClick={() => navigate('land')} alt="logo" width={100} className='rounded-lg cursor-pointer md:w-54 lg:w-40'/>
     
       <section className='hidden md:flex items-center w-4/6 lg:w-8/12 md:justify-evenly lg:justify-evenly text-[16px] text-lime-400'>
 
@@ -44,19 +44,6 @@ const NavBar = () => {
        hover:text-lime-100 hover:border-lime-100'>Contacto</a>
 
       </section>
-
-        <section className='lg:flex items-center hidden'>
-          <a href="https://wa.me/994149032"
-            target="_blank">
-            <img src="/imgs/wsp.png" alt="wsp" width={60} className='self-center p-1 mt-1'/>
-          </a>
-
-          <a href="https://www.instagram.com/trinidadstudiobarberia/"
-          target="_blank">
-            <img src="/imgs/ig.png" alt="ig" width={60} className='self-center p-0.5 cursor-pointer'/>
-          </a>
-        </section>
-
 
       {burguerActive && (<BurguerMenu setBurguerActive={ setBurguerActive }/>)}
       
