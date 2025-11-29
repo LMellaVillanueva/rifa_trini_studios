@@ -28,7 +28,7 @@ const Landing = () => {
             {/* INFO */}
         <div className="hidden md:block w-full h-5 -mt-10 bg-lime-400 blur-sm"></div>
 
-        <article className='flex flex-col gap-8 rounded-xl p-7 items-center md:pb-20'>
+        <article className='flex flex-col gap-20 rounded-xl p-7 items-center md:pb-20'>
 
             <section className="flex flex-col gap-8 items-center todo">
                 <h1 className='text-[2.9rem] md:text-7xl text-lime-400 font-medium text_1'>¡Compra <br /> tus Números!</h1>
