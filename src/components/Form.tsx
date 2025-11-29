@@ -186,9 +186,9 @@ const Form = () => {
             <div className='flex flex-col items-center gap-5'>
               <label htmlFor="">Cantidad de Números:</label>
               <div className='flex items-center gap-5'>
-                <button type='button' onClick={() => {setUser( { ...user, numOfNumbers: '2' } )}} value={user.numOfNumbers} name='numOfNumbers' className={`text_2 rounded-lg py-3 text-black hover:bg-lime-200 hover:cursor-pointer w-18 ${user.numOfNumbers === '2' ? 'bg-lime-200' : 'bg-lime-400'}`}>2</button>
-                <button type='button' onClick={() => {setUser( { ...user, numOfNumbers: '4' } )}} value={user.numOfNumbers} name='numOfNumbers' className={`text_2 rounded-lg py-3 text-black hover:bg-lime-200 hover:cursor-pointer w-18 ${user.numOfNumbers === '4' ? 'bg-lime-200' : 'bg-lime-400'}`}>4</button>
-                <button type='button' onClick={() => {setUser( { ...user, numOfNumbers: '6' } )}} value={user.numOfNumbers} name='numOfNumbers' className={`text_2 rounded-lg py-3 text-black hover:bg-lime-200 hover:cursor-pointer w-18 ${user.numOfNumbers === '6' ? 'bg-lime-200' : 'bg-lime-400'}`}>6</button>
+                <button type='button' onClick={() => {setUser( { ...user, numOfNumbers: '2' } )}} value={user.numOfNumbers} name='numOfNumbers' className={`text_2 rounded-lg py-3 text-black hover:bg-lime-200 hover:cursor-pointer w-18 transition-colors duration-200 ${user.numOfNumbers === '2' ? 'bg-lime-200' : 'bg-lime-400'}`}>2</button>
+                <button type='button' onClick={() => {setUser( { ...user, numOfNumbers: '4' } )}} value={user.numOfNumbers} name='numOfNumbers' className={`text_2 rounded-lg py-3 text-black hover:bg-lime-200 hover:cursor-pointer w-18 transition-colors duration-200 ${user.numOfNumbers === '4' ? 'bg-lime-200' : 'bg-lime-400'}`}>4</button>
+                <button type='button' onClick={() => {setUser( { ...user, numOfNumbers: '6' } )}} value={user.numOfNumbers} name='numOfNumbers' className={`text_2 rounded-lg py-3 text-black hover:bg-lime-200 hover:cursor-pointer w-18 transition-colors duration-200 ${user.numOfNumbers === '6' ? 'bg-lime-200' : 'bg-lime-400'}`}>6</button>
               </div>
               <p className='text-center text-lg md:text-xl'>¡Recuerda que los números se asignan al azar!</p>
             </div>
@@ -201,7 +201,7 @@ const Form = () => {
             </span>
             
             <button 
-            className='bg-lime-400 text_1 rounded-lg py-3 text-black hover:bg-lime-200 hover:cursor-pointer'
+            className='bg-lime-400 text_1 rounded-lg py-3 text-black transition-colors duration-200 hover:bg-lime-200 hover:cursor-pointer'
             type='submit'>Comprar números</button>
           </form>
     </main>

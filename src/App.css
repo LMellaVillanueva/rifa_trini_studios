@@ -71,13 +71,36 @@
 .todo {
   opacity: 0;
   transform: translateX(-200px);
-  transition: 1200ms ease;
+  transition: 800ms ease;
 }
 
 .todo.show {
   transform: translateX(0);
   opacity: 1;
 }
+
+.todo2 {
+  opacity: 0;
+  transform: translateX(-200px);
+  transition: 820ms ease;
+}
+
+.todo2.show {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.todo3 {
+  opacity: 0;
+  transform: translateX(-200px);
+  transition: 830ms ease;
+}
+
+.todo3.show {
+  transform: translateX(0);
+  opacity: 1;
+}
+
 
 .burguer {
   opacity: 0;

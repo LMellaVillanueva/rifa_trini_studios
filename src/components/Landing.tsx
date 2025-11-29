@@ -6,9 +6,11 @@ import { useIntersectionAnim } from "../hooks/useIntersectionAnim";
 const Landing = () => {
 
   useIntersectionAnim('.todo')
+  useIntersectionAnim('.todo2')
+  useIntersectionAnim('.todo3')
 
   return (
-    <main className='flex flex-col gap-20 py-10 pb-24 w-full mt-12'>
+    <main className='flex flex-col gap-20 py-10 pb-24 w-full mt-8 md:mt-5'>
 
         {/* PREMIO */}
         <Jackpot/>
@@ -30,32 +32,32 @@ const Landing = () => {
 
         <article className='flex flex-col gap-20 rounded-xl p-7 items-center md:pb-20'>
 
-            <section className="flex flex-col gap-8 items-center todo">
-                <h1 className='text-[2.9rem] md:text-7xl text-lime-400 font-medium text_1'>¡Compra <br /> tus Números!</h1>
+            <section className="flex flex-col gap-8 items-center">
+                <h1 className='text-[2.9rem] md:text-7xl text-lime-400 font-medium text_1 todo'>¡Compra <br /> tus Números!</h1>
 
-                <span className='flex flex-col items-center text-2xl md:text-4xl'>
+                <span className='flex flex-col items-center text-2xl md:text-4xl todo2'>
                     <p className='text_2'>Compra mínima:</p>
                     <p className='text-lime-400 text-4xl md:text-5xl font-extrabold text_3'>2 números</p>
                 </span>
 
-                <span className='flex flex-col items-center text-2xl md:text-4xl'>
+                <span className='flex flex-col items-center text-2xl md:text-4xl todo3'>
                     <p className='text_2'>Valor por 2 números:</p>
                     <p className='text-lime-400 text-5xl md:text-6xl font-extrabold text_3'>$6.000</p>
                 </span>
 
-                <span className='flex flex-col items-center pt-5 pb-10'>
+                <span className='flex flex-col items-center pt-5 pb-10 todo3'>
                     <p className='text-2xl md:text-3xl tracking-wide text_2'>Los números se</p>
                     <p className='text-lime-400 text-3xl md:text-4xl tracking-wide text_3'>ASIGNAN AL AZAR</p>
                     <p className='text-2xl md:text-3xl text_2'>del 1 al 200</p>
                 </span>
             </section>
 
-            <section className="flex flex-col gap-8 items-center todo">
+            <section className="flex flex-col gap-8 items-center">
             {/* DATOS TRANSFER. */}
-                <h1 className='text-4xl md:text-6xl text-lime-400 font-medium text_1' id="payment">Datos de <br /> Transferencia</h1>
-                <FaUniversity size={90}/>
+                <h1 className='text-4xl md:text-6xl text-lime-400 font-medium text_1 todo' id="payment">Datos de <br /> Transferencia</h1>
+                <FaUniversity size={90} className="todo2"/>
 
-                <article className='bg-neutral-800/70 flex flex-col gap-8 p-5 rounded-lg md:p-14 text_2'>
+                <article className='bg-neutral-800/70 flex flex-col gap-8 p-5 rounded-lg md:p-14 text_2 todo3'>
                     <span className='flex justify-between items-center gap-10 text-xl md:text-2xl'>
                         <p>Nombre:</p>
                         <p className='text_2 text-lime-400'>José Matute</p>
@@ -80,7 +82,7 @@ const Landing = () => {
             </section>
         </article>
 
-        <a className='text_2 self-center bg-lime-400 text-black rounded-lg text-2xl px-10 py-4 flex items-center gap-4 hover:bg-lime-200'
+        <a className='text_2 self-center bg-lime-400 text-black rounded-lg text-2xl px-10 py-4 flex items-center gap-4 hover:bg-lime-200 transition-colors duration-200'
         href="https://wa.me/994149032"
         target="_blank">
             Whatsapp

@@ -3,7 +3,7 @@ import { FaBriefcase } from 'react-icons/fa';
 const Footer = () => {
   return (
     <main className="flex flex-col items-center justify-around py-14 bg-black/90 rounded-t-2xl">
-        <p className="text_2 md:text-2xl">Rifa Trinidad Studios 2025 © Todos los derechos reservados.</p> <br />
+        <p className="text_2 md:text-2xl">Rifas Trinidad 2025 <br /> © Todos los derechos reservados.</p> <br />
 
         <div className="flex flex-col md:self-end-safe md:mr-20 items-center gap-1 md:text-lg">
             <p className="underline">Desarrollado por Lucas Mella</p>

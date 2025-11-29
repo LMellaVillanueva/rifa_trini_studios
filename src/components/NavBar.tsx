@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { SlMenu } from "react-icons/sl";
 import BurguerMenu from './BurguerMenu';
+import Button from '../shared/Button';
 
 const NavBar = () => {
 
@@ -11,28 +12,51 @@ const NavBar = () => {
     navigateTo?.scrollIntoView({ behavior: 'smooth' })
     setBurguerActive(false)
   }
-
+  // fixed top-0 w-full flex items-center justify-between px-5 py-2 bg-neutral-900/80 z-20
   return (
-    <nav className='fixed top-0 w-full flex items-center justify-between px-5 py-2 bg-neutral-900/80 z-20
-    md:bg-neutral-900 md:p-5 md:h-1/6
-    lg:left-0' 
+    <nav className='fixed top-0 left-0 w-full flex items-center justify-between px-5 py-2 bg-neutral-900/80 z-20
+    md:bg-neutral-900 md:h-1/6
+    lg:px-0 lg:py-0 lg:gap-10 lg:justify-center' 
     id='allContainer'>
       
       <section className='flex items-center gap-5 md:hidden'>
         <SlMenu size={35} onClick={() => setBurguerActive(true)}/>
       </section>
 
-      <section className='hidden md:flex w-4/5 lg:w-2/4 md:justify-evenly lg:justify-between lg:mx-10 text-2xl text-lime-400'>
-        <button className='text-lime-400 font-semibold hover:text-lime-200 hover:underline cursor-pointer' onClick={() => navigate('land')}>Inicio</button>.
-        <button className='text-lime-400 font-semibold hover:text-lime-200 hover:underline cursor-pointer' onClick={() => navigate('payment')}>Pago</button>.
-        <button className='text-lime-400 font-semibold hover:text-lime-200 hover:underline cursor-pointer' onClick={() => navigate('form')}>Enviar Datos</button>.
+        <img src="/imgs/logo.png" alt="logo" width={100} className='rounded-lg md:w-54 lg:w-40'/>
+    
+      <section className='hidden md:flex items-center w-4/6 lg:w-8/12 md:justify-evenly lg:justify-evenly text-[16px] text-lime-400'>
+
+        <Button
+        onClick={() => navigate('land')}
+        text='Inicio'/>
+        <Button
+        onClick={() => navigate('payment')}
+        text='Pago'/>
+        <Button
+        onClick={() => navigate('form')}
+        text='Enviar Datos'/>
+        
         <a 
         href="https://wa.me/994149032"
         target="_blank" 
-        className='text-lime-400 font-semibold hover:text-lime-200 hover:underline cursor-pointer'>Contacto</a>
+        className='text-lime-400 border border-lime-400 px-[25px] py-3 w-38 rounded-2xl font-semibold cursor-pointer
+       hover:text-lime-100 hover:border-lime-100'>Contacto</a>
+
       </section>
 
-      <img src="/imgs/logo.png" alt="logo" width={130} className='rounded-lg md:w-54 lg:w-44'/>
+        <section className='lg:flex items-center hidden'>
+          <a href="https://wa.me/994149032"
+            target="_blank">
+            <img src="/imgs/wsp.png" alt="wsp" width={60} className='self-center p-1 mt-1'/>
+          </a>
+
+          <a href="https://www.instagram.com/trinidadstudiobarberia/"
+          target="_blank">
+            <img src="/imgs/ig.png" alt="ig" width={60} className='self-center p-0.5 cursor-pointer'/>
+          </a>
+        </section>
+
 
       {burguerActive && (<BurguerMenu setBurguerActive={ setBurguerActive }/>)}
       
