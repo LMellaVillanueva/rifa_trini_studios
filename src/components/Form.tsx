@@ -132,7 +132,7 @@ const Form = () => {
     }
 
   return (
-    <main className='flex flex-col gap-8 rounded-xl px-7 pb-7 items-center md:pb-20'>
+    <main className='flex flex-col gap-8 rounded-xl px-7 pb-7 items-center md:p-14 md:pb-20'>
             {/* SideImgs */}
         {/* <img src="/imgs/palabra_rifa.png" className="rotate-90 absolute top-795 left-135 scale-200 hidden md:block" alt="" />
         <img src="/imgs/palabra_rifa.png" className="rotate-270 absolute top-795 right-135 scale-200 hidden md:block" alt="" /> */}

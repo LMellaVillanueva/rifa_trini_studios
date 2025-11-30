@@ -10,7 +10,7 @@ const Landing = () => {
   useIntersectionAnim('.todo3')
 
   return (
-    <main className='flex flex-col gap-20 py-10 pb-24 w-full mt-8 md:mt-5'>
+    <main className='flex flex-col gap-20 py-10 w-full mt-8 md:mt-5'>
 
         {/* PREMIO */}
         <Jackpot/>
@@ -31,7 +31,7 @@ const Landing = () => {
             {/* INFO */}
         <div className="hidden md:block w-full h-5 -mt-10 bg-lime-400 blur-sm"></div>
 
-        <article className='flex flex-col gap-20 rounded-xl p-7 items-center md:pb-20'>
+        <article className='flex flex-col gap-20 rounded-xl items-center md:pb-20'>
             {/* SideImgs */}
             {/* <img src="/imgs/palabra_rifa.png" className="rotate-90 absolute left-135 hidden md:block" alt="" />
             <img src="/imgs/palabra_rifa.png" className="rotate-270 absolute right-135 hidden md:block" alt="" /> */}
@@ -61,7 +61,7 @@ const Landing = () => {
                 <h1 className='text-4xl md:text-6xl text-lime-400 font-medium text_1 todo'>Datos de <br /> Transferencia</h1>
                 <FaUniversity size={90} className="todo2"/>
 
-                <article className='bg-neutral-800/70 flex flex-col gap-8 p-5 rounded-lg md:p-14 text_2 todo3'>
+                <article className='bg-neutral-800/70 flex flex-col gap-8 p-5 rounded-lg text_2 todo3'>
                     <span className='flex justify-between items-center gap-10 text-xl md:text-2xl'>
                         <p>Nombre:</p>
                         <p className='text_2 text-lime-400'>José Matute</p>
@@ -86,12 +86,21 @@ const Landing = () => {
             </section>
         </article>
 
-        <a className='text_2 self-center bg-lime-400 text-black rounded-lg text-2xl px-10 py-4 flex items-center gap-4 hover:bg-lime-200 transition-colors duration-200' id='form'
-        href="https://wa.me/994149032"
-        target="_blank">
-            Whatsapp
-            <img src="/imgs/wspBlack.png" alt="wsp" width={50} />
-        </a>
+        <section className="flex flex-col gap-8 mx-auto">
+            <a className='text_2 self-center bg-lime-400 text-black rounded-lg text-2xl px-10 py-4 flex items-center gap-4 hover:bg-lime-200 transition-colors duration-200' id='form'
+            href="https://wa.me/994149032"
+            target="_blank">
+                Whatsapp
+                <img src="/imgs/wspBlack.png" alt="wsp" width={50} />
+            </a>
+
+            <a className='hidden md:flex text_2 self-center bg-lime-400 text-black rounded-lg text-2xl px-8 py-4 items-center gap-4 hover:bg-lime-200 transition-colors duration-200' id='form'
+            href="https://www.instagram.com/trinidadstudiobarberia/"
+            target="_blank">
+                Instagram
+                <img src="/imgs/igBlack.png" alt="wsp" width={65} />
+            </a>
+        </section>
         {/* FORMULARIO */}
         <Form/>
         
