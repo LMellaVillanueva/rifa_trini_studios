@@ -133,10 +133,6 @@ const Form = () => {
 
   return (
     <main className='flex flex-col gap-8 rounded-xl px-7 pb-7 items-center md:p-14 md:pb-20'>
-            {/* SideImgs */}
-        {/* <img src="/imgs/palabra_rifa.png" className="rotate-90 absolute top-795 left-135 scale-200 hidden md:block" alt="" />
-        <img src="/imgs/palabra_rifa.png" className="rotate-270 absolute top-795 right-135 scale-200 hidden md:block" alt="" /> */}
-
       <span className='todo'>
           <h1 className='text_1 text-lime-400 text-4xl md:text-6xl'>Envíanos tu Comprobante</h1>
           <p className='text_2 text-md md:text-2xl'>Una vez hecha la transferencia, envía este formulario para conocer tus datos y asignarte números.</p>

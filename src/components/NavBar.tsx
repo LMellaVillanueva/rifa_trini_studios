@@ -15,15 +15,15 @@ const NavBar = () => {
   // fixed top-0 w-full flex items-center justify-between px-5 py-2 bg-neutral-900/80 z-20
   return (
     <nav className='fixed top-0 left-0 w-full flex items-center justify-between px-5 py-2 bg-neutral-900/80 z-20
-    md:bg-neutral-900 md:h-1/6
-    lg:px-0 lg:py-0 lg:gap-10 lg:justify-center' 
+    md:bg-neutral-900 
+    lg:px-0 lg:py-0 lg:gap-10 lg:justify-center lg:h-[150px]' 
     id='allContainer'>
       
       <section className='flex items-center gap-5 md:hidden'>
         <SlMenu size={35} onClick={() => setBurguerActive(true)}/>
       </section>
 
-      <img src="/imgs/logo.png" onClick={() => navigate('land')} alt="logo" width={100} className='rounded-lg cursor-pointer md:w-54 lg:w-40'/>
+      <img src="/imgs/logo.png" onClick={() => navigate('land')} alt="logo" width={130} className='rounded-lg cursor-pointer lg:w-72'/>
     
       <section className='hidden md:flex items-center w-4/6 lg:w-8/12 md:justify-evenly lg:justify-evenly text-[16px] text-lime-400'>
 

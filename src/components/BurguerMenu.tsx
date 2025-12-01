@@ -100,6 +100,7 @@ const BurguerMenu = ({ setBurguerActive }: Props) => {
         </section>
 
       </section>
+      <img src="/imgs/logo.png" alt="logo" width={100} className="ml-4 -mt-4" />
     </main>
   )
 }
