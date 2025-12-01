@@ -21,14 +21,16 @@ const BurguerMenu = ({ setBurguerActive }: Props) => {
   }
 
   return (
-    <main className='fixed top-0 left-0 w-4/5 bg-neutral-900 z-10 p-3 pb-44 flex flex-col gap-6 px-5 burguer md:hidden'>
+    <main className='fixed top-0 left-0 w-4/5 bg-neutral-900 z-10 p-3 pb-44 flex flex-col gap-6 px-5 burguer
+      md:pb-60 md:gap-16
+      lg:hidden'>
       {/* logo y X */}
       <section className='flex items-center justify-between w-full pt-5'>
         <HiOutlineX onClick={() => setBurguerActive(false)} size={40}/>
       </section>
 
       {/* links */}
-      <section className='flex flex-col items-start text-[1.6rem] gap-5 text_2'>
+      <section className='flex flex-col items-start text-[1.6rem] md:text-3xl gap-5 text_2'>
         <div className='flex w-full justify-between items-center'>
         <button className='text-lime-400 hover:text-lime-200 hover:underline' onClick={() => navigate('land')}>Inicio</button>
         <FaHome size={30}/>
@@ -52,9 +54,9 @@ const BurguerMenu = ({ setBurguerActive }: Props) => {
       </section>
 
       {/* contacto */}
-      <section className='flex flex-col items-start gap-4'>
+      <section className='flex flex-col items-start gap-4 md:text-xl'>
         
-        <h2 className='text-xl'>Contacto</h2>
+        <h2 className='text-xl md:text-2xl'>Contacto</h2>
           
         <section className='flex flex-col items-start'>
           <h2>José Matute</h2>
@@ -100,7 +102,7 @@ const BurguerMenu = ({ setBurguerActive }: Props) => {
         </section>
 
       </section>
-      <img src="/imgs/logo.png" alt="logo" width={100} className="ml-4 -mt-4" />
+      <img src="/imgs/logo.png" alt="logo" width={100} className="ml-4 -mt-4 md:w-40" />
     </main>
   )
 }

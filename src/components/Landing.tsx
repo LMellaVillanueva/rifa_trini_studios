@@ -94,7 +94,7 @@ const Landing = () => {
                 <img src="/imgs/wspBlack.png" alt="wsp" width={50} />
             </a>
 
-            <a className='hidden md:flex text_2 self-center bg-lime-400 text-black rounded-lg text-2xl px-8 py-4 items-center gap-4 hover:bg-lime-200 transition-colors duration-200' id='form'
+            <a className='hidden lg:flex text_2 self-center bg-lime-400 text-black rounded-lg text-2xl px-8 py-4 items-center gap-4 hover:bg-lime-200 transition-colors duration-200' id='form'
             href="https://www.instagram.com/trinidadstudiobarberia/"
             target="_blank">
                 Instagram

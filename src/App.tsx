@@ -14,7 +14,7 @@ function App() {
         path="/"
         element={
           <main className="relative flex flex-col justify-between gap-12 items-center overflow-clip" id='allContainer'>
-          <img src="/imgs/word.png" className="absolute hidden md:block pt-[500px]" alt="" />
+          <img src="/imgs/word.png" className="absolute hidden lg:block pt-[500px]" alt="" />
 
             {/* <img src="/imgs/palabra_rifa.png" alt="side_img" className='absolute rotate-270 right-190 h-screen object-cover' /> */}
             <div id='evContainer'>

@@ -19,13 +19,13 @@ const NavBar = () => {
     lg:px-0 lg:py-0 lg:gap-10 lg:justify-center lg:h-[150px]' 
     id='allContainer'>
       
-      <section className='flex items-center gap-5 md:hidden'>
+      <section className='flex items-center gap-5 lg:hidden'>
         <SlMenu size={35} onClick={() => setBurguerActive(true)}/>
       </section>
 
-      <img src="/imgs/logo.png" onClick={() => navigate('land')} alt="logo" width={130} className='rounded-lg cursor-pointer lg:w-72'/>
+      <img src="/imgs/logo.png" onClick={() => navigate('land')} alt="logo" width={130} className='rounded-lg cursor-pointer md:w-54 lg:w-72'/>
     
-      <section className='hidden md:flex items-center w-4/6 lg:w-8/12 md:justify-evenly lg:justify-evenly text-[16px] text-lime-400'>
+      <section className='hidden lg:flex items-center w-4/6 lg:w-8/12 md:justify-evenly lg:justify-evenly text-[16px] text-lime-400'>
 
         <Button
         onClick={() => navigate('land')}
