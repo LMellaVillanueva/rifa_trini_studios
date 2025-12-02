@@ -86,15 +86,15 @@ const Landing = () => {
             </section>
         </article>
 
-        <section className="flex flex-col gap-8 mx-auto">
-            <a className='text_2 self-center bg-lime-400 text-black rounded-lg text-2xl px-10 py-4 flex items-center gap-4 hover:bg-lime-200 transition-colors duration-200' id='form'
+        <section className="hidden lg:flex flex-col gap-8 mx-auto todo">
+            <a className='text_2 self-center bg-lime-400 text-black rounded-lg text-2xl px-10 py-4 flex items-center gap-4 hover:bg-lime-200 transition-colors duration-200'
             href="https://wa.me/994149032"
             target="_blank">
                 Whatsapp
                 <img src="/imgs/wspBlack.png" alt="wsp" width={50} />
             </a>
 
-            <a className='hidden lg:flex text_2 self-center bg-lime-400 text-black rounded-lg text-2xl px-8 py-4 items-center gap-4 hover:bg-lime-200 transition-colors duration-200' id='form'
+            <a className='hidden lg:flex text_2 self-center bg-lime-400 text-black rounded-lg text-2xl px-8 py-4 items-center gap-4 hover:bg-lime-200 transition-colors duration-200'
             href="https://www.instagram.com/trinidadstudiobarberia/"
             target="_blank">
                 Instagram
