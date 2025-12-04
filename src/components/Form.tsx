@@ -71,6 +71,8 @@ const Form = () => {
                     icon: "info",
                   });
               }
+
+                //! Email para admins con la data del usuario y el voucher
                 // await emailjs
                 // .send(
                 //   'service_yefes9k',
@@ -88,6 +90,7 @@ const Form = () => {
                 //   (error) => console.error('Error:', error)
                 // );
 
+                //! Email para el usuario que compra números
                 // await emailjs
                 // .send(
                 //   'service_yefes9k',
@@ -109,12 +112,7 @@ const Form = () => {
                 //   },
                 //   (error) => console.error('Error:', error)
                 // );
-                Swal.fire({
-                    title: "Números comprados!",
-                    text: 'Se te enviará un correo a la brevedad para confirmar tu comprobante.',
-                    icon: "success",
-                    draggable: true
-                  });
+                
                 setUser({ name: '', phone: '', email: '', numOfNumbers: '2' })
                 return setVoucher(null)
             }
