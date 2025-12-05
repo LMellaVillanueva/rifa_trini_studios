@@ -7,7 +7,7 @@ type Props = {
     value: string
     onChange: React.ChangeEventHandler<HTMLInputElement>
     maxLength: number
-    required: boolean
+    required?: boolean
     placeholder?: string
 }
 

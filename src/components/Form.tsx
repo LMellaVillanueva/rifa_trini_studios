@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react'
 import type { User } from '../types'
-import api from '../AxiosConfig'
+// import api from '../AxiosConfig'
 // import emailjs from '@emailjs/browser';
 import Input from '../shared/Input';
 import Swal from 'sweetalert2';
@@ -30,7 +30,7 @@ const Form = () => {
         if (!user.name || !user.phone || user.phone.length < 9) {
             return Swal.fire({
             title: "Oops...",
-            text: 'Completa la info.',
+            text: 'Rellena con tus datos.',
             icon: "error",
           });
         }
@@ -38,7 +38,7 @@ const Form = () => {
         if (!voucher) 
           return Swal.fire({
           title: "Oops...",
-          text: 'Envía tu comprobante',
+          text: 'Envía tu comprobante.',
           icon: "error",
         });
 
@@ -50,27 +50,28 @@ const Form = () => {
         formData.append('voucher', voucher)
 
         try {
-            const { data } = await api.post('/user/register', formData, {
-                headers: { 'Content-Type': 'multipart/form-data' }
-            })
-            if (data) {
-              if (data.message) {
-                await Swal.fire({
-                    title: data.message,
-                    text: 'Ya se vendieron todos los números de rifa. Muchas gracias!',
-                    icon: "error",
-                  });
-                  setUser({ name: '', phone: '', email: '', numOfNumbers: '2' })
-                  return setVoucher(null)
-              }
+          //! Funcionalidad no diponible aún
+            // const { data } = await api.post('/user/register', formData, {
+            //     headers: { 'Content-Type': 'multipart/form-data' }
+            // })
+            // if (data) {
+            //   if (data.message) {
+            //     await Swal.fire({
+            //         title: data.message,
+            //         text: 'Ya se vendieron todos los números de rifa. Muchas gracias!',
+            //         icon: "error",
+            //       });
+            //       setUser({ name: '', phone: '', email: '', numOfNumbers: '2' })
+            //       return setVoucher(null)
+            //   }
 
-              if (data.existant) {
-                  await Swal.fire({
-                    title: 'Usuario ya registrado',
-                    text: data.existant,
-                    icon: "info",
-                  });
-              }
+            //   if (data.existant) {
+            //       await Swal.fire({
+            //         title: 'Usuario ya registrado',
+            //         text: data.existant,
+            //         icon: "info",
+            //       });
+            //   }
 
                 //! Email para admins con la data del usuario y el voucher
                 // await emailjs
@@ -112,10 +113,14 @@ const Form = () => {
                 //   },
                 //   (error) => console.error('Error:', error)
                 // );
-                
+              // }
+                await Swal.fire({
+                  title: 'Función no disponible aún...',
+                  text: '¡Estamos dando los últimos retoques para tu millón de pesos!',
+                  icon: "info",
+                });
                 setUser({ name: '', phone: '', email: '', numOfNumbers: '2' })
                 return setVoucher(null)
-            }
         } catch (error: any) {
              if (error.response && error.response.data) {
               Swal.fire({
@@ -145,7 +150,7 @@ const Form = () => {
             value={user.name}
             onChange={handleChange}
             maxLength={20}
-            required={true}
+            // required={true}
             />
 
             <Input
@@ -156,7 +161,7 @@ const Form = () => {
             maxLength={9}
             value={user.phone}
             onChange={handleChange}
-            required={true}
+            // required={true}
             />
 
             <Input
@@ -167,7 +172,7 @@ const Form = () => {
             maxLength={100}
             value={user.email}
             onChange={handleChange}
-            required={true}
+            // required={true}
             />
             
             <div>
@@ -176,7 +181,7 @@ const Form = () => {
                 className='text-lg border-2 border-lime-400 rounded-lg p-0.5 w-full' 
                 type="file" 
                 name='voucher'
-                required
+                // required
                 ref={voucherRef}
                 accept='image/*'
                 onChange={handleVoucherChange} />
