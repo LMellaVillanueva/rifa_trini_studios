@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react'
 import type { User } from '../types'
-// import api from '../AxiosConfig'
-// import emailjs from '@emailjs/browser';
+import api from '../AxiosConfig'
+import emailjs from '@emailjs/browser';
 import Input from '../shared/Input';
 import Swal from 'sweetalert2';
 import { useIntersectionAnim } from '../hooks/useIntersectionAnim';
@@ -16,13 +16,36 @@ const Form = () => {
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setUser({...user, 
-        [event.target.name]: event.target.value
-        })
+      [event.target.name]: event.target.value
+    })
+  }
+  
+  const handleVoucherChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0] || null
+    setVoucher(file)
+  }
+  
+  //? Fecha de hoy para enviarla por correo 
+    const todayDate = () => {
+        const fecha = new Date();
+        const dia = String(fecha.getDate()).padStart(2, '0');
+        const mes = String(fecha.getMonth() + 1).padStart(2, '0');
+        const año = fecha.getFullYear();
+        return `${dia}-${mes}-${año}`;
     }
 
-    const handleVoucherChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const file = event.target.files?.[0] || null
-        setVoucher(file)
+    //? Actualizar el precio total para enviarlo por correo a la persona que compra números
+    const totalPrice = (num: number) => {
+        switch (num) {
+          case 2:
+            return '$6.000'
+            
+          case 4:
+            return '$12.000'
+            
+          case 6:
+            return '$18.000'
+        }
     }
 
     const handleSubmit = async (event: React.FormEvent) => {
@@ -51,74 +74,78 @@ const Form = () => {
 
         try {
           //! Funcionalidad no diponible aún
-            // const { data } = await api.post('/user/register', formData, {
-            //     headers: { 'Content-Type': 'multipart/form-data' }
-            // })
-            // if (data) {
-            //   if (data.message) {
-            //     await Swal.fire({
-            //         title: data.message,
-            //         text: 'Ya se vendieron todos los números de rifa. Muchas gracias!',
-            //         icon: "error",
-            //       });
-            //       setUser({ name: '', phone: '', email: '', numOfNumbers: '2' })
-            //       return setVoucher(null)
-            //   }
+            const { data } = await api.post('/user/register', formData, {
+                headers: { 'Content-Type': 'multipart/form-data' }
+            })
 
-            //   if (data.existant) {
-            //       await Swal.fire({
-            //         title: 'Usuario ya registrado',
-            //         text: data.existant,
-            //         icon: "info",
-            //       });
-            //   }
+            if (data) {
+              if (data.message) {
+                await Swal.fire({
+                    title: data.message,
+                    text: 'Ya se vendieron todos los números de rifa. Muchas gracias!',
+                    icon: "error",
+                  });
+                  setUser({ name: '', phone: '', email: '', numOfNumbers: '2' })
+                  return setVoucher(null)
+              }
+
+              if (data.existant) {
+                  await Swal.fire({
+                    title: 'Usuario ya registrado',
+                    text: data.existant,
+                    icon: "info",
+                  });
+              }
+              
 
                 //! Email para admins con la data del usuario y el voucher
-                // await emailjs
-                // .send(
-                //   'service_yefes9k',
-                //   'template_3lryzv6',
-                //   {
-                //     name: data.user,
-                //     phone: data.phone,
-                //     voucher: data.voucher.image_url,
-                //     email: data.email
-                //   },
-                //   { publicKey: 'zADAsfTnn9pOJcyPO' }
-                // )
-                // .then(
-                //   async () => {},
-                //   (error) => console.error('Error:', error)
-                // );
+                await emailjs
+                .send(
+                  'service_yefes9k',
+                  'template_3lryzv6',
+                  {
+                    name: data.user,
+                    phone: data.phone,
+                    voucher: data.voucher.image_url,
+                    email: data.email
+                  },
+                  { publicKey: 'zADAsfTnn9pOJcyPO' }
+                )
+                .then(
+                  async () => {},
+                  (error) => console.error('Error:', error)
+                );
 
                 //! Email para el usuario que compra números
-                // await emailjs
-                // .send(
-                //   'service_yefes9k',
-                //   'template_7sfakso',
-                //   {
-                //     email: data.email,
-                //     numbers: data.voucher.num_of_numbers
-                //   },
-                //   { publicKey: 'zADAsfTnn9pOJcyPO' }
-                // )
-                // .then(
-                //   async () => {
-                //   await Swal.fire({
-                //     title: "Números comprados!",
-                //     text: 'Se te enviará un correo a la brevedad para confirmar tu comprobante.',
-                //     icon: "success",
-                //     draggable: true
-                //   });
-                //   },
-                //   (error) => console.error('Error:', error)
-                // );
-              // }
-                await Swal.fire({
-                  title: 'Función no disponible aún...',
-                  text: '¡Estamos dando los últimos retoques para tu millón de pesos!',
-                  icon: "info",
-                });
+                await emailjs
+                .send(
+                  'service_yefes9k',
+                  'template_7sfakso',
+                  {
+                    name: data.user,
+                    email: data.email,
+                    numbers: data.voucher.num_of_numbers,
+                    total: totalPrice(data.voucher.num_of_numbers),
+                    date: todayDate()
+                  },
+                  { publicKey: 'zADAsfTnn9pOJcyPO' }
+                )
+                .then(
+                  async () => {
+                  await Swal.fire({
+                    title: "Números comprados!",
+                    text: 'Dentro de 24 hrs. se te enviará un correo para confirmar tu comprobante.',
+                    icon: "success",
+                  });
+                  },
+                  (error) => console.error('Error:', error)
+                );
+              }
+                // await Swal.fire({
+                //   title: 'Función no disponible aún...',
+                //   text: '¡Estamos dando los últimos retoques para tu millón de pesos!',
+                //   icon: "info",
+                // });
                 setUser({ name: '', phone: '', email: '', numOfNumbers: '2' })
                 return setVoucher(null)
         } catch (error: any) {

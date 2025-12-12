@@ -3,7 +3,7 @@ import api from '../AxiosConfig'
 import { useNavigate } from 'react-router-dom'
 import type { CompleteUser, Voucher } from '../types'
 import Swal from 'sweetalert2';
-// import emailjs from '@emailjs/browser';
+import emailjs from '@emailjs/browser';
 
 const Dashboard = () => {
   const navigate = useNavigate()
@@ -82,22 +82,22 @@ const Dashboard = () => {
                   });
         }
         //! Enviar email con los números de rifa al usuario
-        // await emailjs
-        //         .send(
-        //           'service_yefes9k',
-        //           'template_3lryzv6',
-        //           {
-        //             name: data.user,
-        //             phone: data.phone,
-        //             voucher: data.voucher.image_url,
-        //             email: data.email
-        //           },
-        //           { publicKey: 'zADAsfTnn9pOJcyPO' }
-        //         )
-        //         .then(
-        //           async () => {},
-        //           (error) => console.error('Error:', error)
-        //         );
+        await emailjs
+                .send(
+                  'service_yefes9k',
+                  'template_3lryzv6',
+                  {
+                    name: data.user,
+                    phone: data.phone,
+                    voucher: data.voucher.image_url,
+                    email: data.email
+                  },
+                  { publicKey: 'zADAsfTnn9pOJcyPO' }
+                )
+                .then(
+                  async () => {},
+                  (error) => console.error('Error:', error)
+                );
       }
     } catch (error: any) {
              if (error.response && error.response.data) {
