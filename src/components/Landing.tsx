@@ -10,7 +10,7 @@ const Landing = () => {
   useIntersectionAnim('.todo3')
 
   return (
-    <main className='flex flex-col gap-20 py-10 w-full mt-8 md:mt-5'>
+    <main className='flex flex-col gap-20 py-10 w-full mt-24 md:mt-5'>
 
         {/* PREMIO */}
         <Jackpot/>
