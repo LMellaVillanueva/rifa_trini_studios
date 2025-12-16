@@ -19,7 +19,6 @@ const NavBar = () => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY
 
-      // evita micro scrolls
       if (Math.abs(currentScrollY - lastScrollY) < 10) return
 
       if (currentScrollY > lastScrollY) {
@@ -43,7 +42,6 @@ const NavBar = () => {
   return (
     <div className="fixed top-0 left-0 w-full z-20">
       
-      {/* NAVBAR */}
       <nav
         className="
           w-full flex items-center justify-between px-5 py-2 
@@ -88,7 +86,7 @@ const NavBar = () => {
         )}
       </nav>
 
-      {/* NOTIFICACIÓN */}
+      {/* Notificación */}
       <section
         className={`
           w-full bg-lime-500 text-neutral-900
