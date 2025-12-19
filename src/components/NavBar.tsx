@@ -4,40 +4,28 @@ import BurguerMenu from './BurguerMenu'
 import Button from '../shared/Button'
 
 const NavBar = () => {
-
   const [burguerActive, setBurguerActive] = useState(false)
   const [showNotice, setShowNotice] = useState(true)
-  const [lastScrollY, setLastScrollY] = useState(0)
+  const wSize = window.innerWidth
+  const rifaDate = '30 de noviembre'
 
   const navigate = (sect: string) => {
-    const navigateTo = document.getElementById(sect)
-    navigateTo?.scrollIntoView({ behavior: 'smooth' })
+    if (sect === 'land') {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    } else {
+      document.getElementById(sect)?.scrollIntoView({ behavior: 'smooth' })
+    }
     setBurguerActive(false)
   }
 
   useEffect(() => {
     const handleScroll = () => {
-      const currentScrollY = window.scrollY
-
-      if (Math.abs(currentScrollY - lastScrollY) < 10) return
-
-      if (currentScrollY > lastScrollY) {
-        // scroll hacia abajo
-        setShowNotice(false)
-      } else {
-        // scroll hacia arriba
-        setShowNotice(true)
-      }
-
-      setLastScrollY(currentScrollY)
+      setShowNotice(window.scrollY <= 20)
     }
 
     window.addEventListener('scroll', handleScroll)
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll)
-    }
-  }, [lastScrollY])
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   return (
     <div className="fixed top-0 left-0 w-full z-20">
@@ -49,7 +37,6 @@ const NavBar = () => {
           md:bg-neutral-900 
           lg:px-0 lg:py-0 lg:gap-10 lg:justify-center lg:h-[150px]
         "
-        id="allContainer"
       >
         <section className="flex items-center gap-5 lg:hidden">
           <SlMenu size={35} onClick={() => setBurguerActive(true)} />
@@ -92,10 +79,16 @@ const NavBar = () => {
           w-full bg-lime-500 text-neutral-900
           text-center py-2 text-md font-semibold
           transition-all duration-300
-          ${showNotice ? 'translate-y-0 opacity-100 pointer-events-auto' : '-translate-y-full opacity-0 pointer-events-none'}
+          ${showNotice 
+            ? 'translate-y-0 opacity-100 pointer-events-auto' 
+            : '-translate-y-full opacity-0 pointer-events-none'}
         `}
       >
-        🎉 La rifa se lanza el 30 de diciembre — ¡No te quedes fuera! 🔥
+        {wSize < 700 ? (
+          <p>🎉 La rifa se lanza el {rifaDate}... <br /> ¡No te quedes fuera! 🔥</p>
+        ) : (
+          <p>🎉 La rifa se lanza el {rifaDate} — ¡No te quedes fuera! 🔥</p>
+        )}
       </section>
 
     </div>
